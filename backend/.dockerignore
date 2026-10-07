@@ -1,0 +1,13 @@
+# Pliki niepotrzebne w obrazie backendu
+.git*
+.github/
+.vscode/
+__pycache__/
+*.pyc
+*.pyproj
+*.sln
+.deployment
+.funcignore
+host.json
+docker-compose.yml
+dockerfile

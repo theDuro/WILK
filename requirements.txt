@@ -1,0 +1,4 @@
+# Zaleznosci skryptow w glownym katalogu (blendy.py, palety.py,
+# add_to_base.py, WMS_BRIDGE.py). Instalacja:  pip install -r requirements.txt
+psycopg2-binary==2.9.11
+requests>=2.31

@@ -1,3 +1,5 @@
+"""DTO czesci maszyny (tabela machine_parts); x, y = pozycja na schemacie w %."""
+
 from dataclasses import dataclass
 from typing import Optional
 from model.models import MachinePart

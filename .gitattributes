@@ -1,0 +1,5 @@
+# Skrypty uruchamiane w kontenerach Linux musza miec konce linii LF,
+# nawet gdy repo jest pobierane na Windows (core.autocrlf=true).
+*.sh text eol=lf
+# Pliki .bat – konce linii Windows
+*.bat text eol=crlf

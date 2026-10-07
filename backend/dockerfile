@@ -1,13 +1,17 @@
+# Obraz API Flask (theduro/flask-app).
 FROM python:3.13.5
 
 WORKDIR /BackEndTestv2
 
+# Najpierw same zaleznosci – lepsze cache'owanie warstw przy zmianach w kodzie
 COPY requirements.txt .
-
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
 EXPOSE 5000
+
+# Bez buforowania stdout – logi od razu widoczne w "docker logs"
+ENV PYTHONUNBUFFERED=1
 
 CMD ["python", "-m", "controller.application"]

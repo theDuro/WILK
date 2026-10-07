@@ -1,3 +1,5 @@
+"""DTO licznika/stanu czesci (tabela machine_part_stats)."""
+
 from dataclasses import dataclass
 from typing import Optional
 from model.models import MachinePartStat

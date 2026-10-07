@@ -1,13 +1,15 @@
-from dataclasses import dataclass, field
-from typing import List, Optional
-from model.models import Company  # Zak�adam, �e to jest ORM z SQLAlchemy
+"""DTO firmy (tabela companies) – uzywane przy logowaniu."""
+
+from dataclasses import dataclass
+from typing import Optional
+from model.models import Company  # model ORM (SQLAlchemy)
 
 @dataclass
 class CompanyDTO:
     id: Optional[int]
     name: str
     login: str
-    password: str  #
+    password: str  # haslo z tabeli companies (nie zwracac go na zewnatrz!)
 
     @classmethod
     def from_orm(cls, orm_obj: Company) -> "CompanyDTO":

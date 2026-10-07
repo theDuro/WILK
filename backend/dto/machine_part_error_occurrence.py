@@ -1,3 +1,5 @@
+"""DTO wystapienia alarmu (tabela machine_part_error_occurrences)."""
+
 from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Optional
@@ -28,7 +30,7 @@ class MachinePartErrorOccurrenceDTO:
             "id": self.id,
             "error_id": self.error_id,
             "part_id": self.part_id,
-            "occurred_at": self.occurred_at.isoformat(),
+            "occurred_at": self.occurred_at.isoformat() if self.occurred_at else None,
             "error_code": self.error_code,
             "description": self.description
         }

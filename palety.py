@@ -1,60 +1,149 @@
-import socket
+"""
+=============================================================================
+PALETY – serwer TCP aktualizujacy liczniki/stany czesci (machine_part_stats)
+=============================================================================
+
+PLC wysyla na port 4200 JSON z jednym obiektem albo lista obiektow:
+    {"part_id": 21, "counter": 5, "is_empty": false}
+    [{"part_id": 21, "counter": 5, "is_empty": false}, {...}]
+
+Dla kazdego obiektu aktualizowane sa wszystkie wiersze machine_part_stats
+z danym part_id. Front (kafelki "OK" / "MALO" / "BRAK") odczytuje te dane
+przez API Flask.
+
+Konwencja frontu: is_empty = true -> BRAK, counter = -1 -> MALO.
+
+Odpowiedz do PLC (tekst):
+    "OK - zaktualizowano X/Y rekordow"         – dla listy
+    "OK - pojedynczy rekord zaktualizowany"    – dla obiektu
+    "Nie znaleziono czesci" / "Blad ..."       – przy bledach
+
+Konfiguracja bazy: stale ponizej lub zmienne srodowiskowe DB_HOST, DB_PORT,
+DB_NAME, DB_USER, DB_PASSWORD. Port TCP: PALETY_PORT.
+=============================================================================
+"""
+
 import json
+import os
+import socket
 import traceback
-import psycopg2
 from threading import Thread
 
-# --- Konfiguracja bazy danych ---
+import psycopg2
+
+# ─────────────────────────────────────────────────────────
+#  KONFIGURACJA
+# ─────────────────────────────────────────────────────────
+
 DB_CONFIG = {
-    "dbname": "postgres",
-    "user": "postgres",
-    "password": "Test1234!",
-    "host": "localhost",
-    "port": 5432,
-    "sslmode": "disable"   # 🔑 zmiana tutaj
+    "dbname":   os.environ.get("DB_NAME", "postgres"),
+    "user":     os.environ.get("DB_USER", "postgres"),
+    "password": os.environ.get("DB_PASSWORD", "Test1234!"),
+    "host":     os.environ.get("DB_HOST", "localhost"),
+    "port":     int(os.environ.get("DB_PORT", 5432)),
+    "sslmode":  "disable",
 }
-# --- Funkcja aktualizacji pojedynczego rekordu ---
-def update_machine_part_stat(data: dict):
+
+TCP_PORT          = int(os.environ.get("PALETY_PORT", 4200))
+BUFFER_SIZE       = 4096
+JSON_MORE_TIMEOUT = 2.0          # [s] ile czekac na reszte niepelnego JSON-a
+MAX_MESSAGE_BYTES = 1024 * 1024
+
+
+# ─────────────────────────────────────────────────────────
+#  POMOCNICZE
+# ─────────────────────────────────────────────────────────
+
+def parse_bool(value) -> bool:
+    """bool("false") w Pythonie to True – dlatego napisy obslugujemy jawnie."""
+    if isinstance(value, str):
+        return value.strip().lower() in ("1", "true", "t", "yes", "y", "tak")
+    return bool(value)
+
+
+def _decode_json(data: bytes):
+    """Dekoduje pierwszy kompletny JSON z bufora (ignoruje padding/null-e po nim)."""
+    text = data.decode("utf-8", errors="replace")
+    starts = [i for i in (text.find("["), text.find("{")) if i != -1]
+    if not starts:
+        raise json.JSONDecodeError("Brak poczatku JSON ('[' lub '{')", text, 0)
+    obj, _end = json.JSONDecoder().raw_decode(text, min(starts))
+    return obj
+
+
+def recv_json(conn: socket.socket):
+    """
+    Czyta z gniazda az do otrzymania kompletnego JSON-a (wczesniej byl jeden
+    recv(4096), ktory mogl uciac dluzsza wiadomosc).
+    Zwraca (surowe_bajty, obiekt) lub (surowe_bajty, None) gdy JSON jest bledny.
+    """
+    data = b""
+    conn.settimeout(None)
+    while len(data) < MAX_MESSAGE_BYTES:
+        try:
+            chunk = conn.recv(BUFFER_SIZE)
+        except socket.timeout:
+            break
+        if not chunk:
+            break
+        data += chunk
+        try:
+            return data, _decode_json(data)
+        except json.JSONDecodeError:
+            conn.settimeout(JSON_MORE_TIMEOUT)
+    return data, None
+
+
+# ─────────────────────────────────────────────────────────
+#  BAZA DANYCH
+# ─────────────────────────────────────────────────────────
+
+def update_machine_part_stat(cur, data: dict) -> bool:
+    """
+    Aktualizuje licznik czesci. Zwraca True, jesli rekord istnial i zostal
+    zaktualizowany. Bledne dane (brak pola, zly typ) -> False.
+    """
     try:
         part_id = int(data["part_id"])
         counter = int(data["counter"])
-        is_empty = bool(data["is_empty"])
-
-        conn = psycopg2.connect(**DB_CONFIG)
-        cur = conn.cursor()
-
-        # Sprawdzenie, czy rekord istnieje
-        cur.execute("SELECT id FROM machine_part_stats WHERE part_id = %s", (part_id,))
-        result = cur.fetchone()
-        if not result:
-            print(f"⚠️ Nie znaleziono części o part_id={part_id}")
-            cur.close()
-            conn.close()
-            return False
-
-        # Aktualizacja rekordu
-        cur.execute("""
-            UPDATE machine_part_stats
-            SET counter = %s,
-                is_empty = %s
-            WHERE part_id = %s
-        """, (counter, is_empty, part_id))
-        conn.commit()
-
-        print(f"✅ Zaktualizowano part_id={part_id}: counter={counter}, is_empty={is_empty}")
-        cur.close()
-        conn.close()
-        return True
-
-    except Exception as e:
-        print(f"❌ Błąd aktualizacji: {e}")
-        traceback.print_exc()
+        is_empty = parse_bool(data["is_empty"])
+    except (KeyError, TypeError, ValueError) as e:
+        print(f"⚠️ Niepoprawny rekord {data!r}: {e}")
         return False
 
+    cur.execute("""
+        UPDATE machine_part_stats
+        SET counter = %s,
+            is_empty = %s
+        WHERE part_id = %s
+    """, (counter, is_empty, part_id))
 
-# --- Serwer TCP ---===
+    if cur.rowcount == 0:
+        print(f"⚠️ Nie znaleziono części o part_id={part_id}")
+        return False
+
+    print(f"✅ Zaktualizowano part_id={part_id}: counter={counter}, is_empty={is_empty}")
+    return True
+
+
+def update_many(items: list) -> int:
+    """Aktualizuje wiele rekordow w jednej transakcji. Zwraca liczbe zaktualizowanych."""
+    conn = psycopg2.connect(**DB_CONFIG)
+    try:
+        with conn:                      # commit na koniec / rollback przy wyjatku
+            with conn.cursor() as cur:
+                return sum(1 for item in items
+                           if isinstance(item, dict) and update_machine_part_stat(cur, item))
+    finally:
+        conn.close()
+
+
+# ─────────────────────────────────────────────────────────
+#  SERWER TCP
+# ─────────────────────────────────────────────────────────
+
 class TCPServer:
-    def __init__(self, host='0.0.0.0', port=4200):
+    def __init__(self, host='0.0.0.0', port=TCP_PORT):
         self.host = host
         self.port = port
 
@@ -65,7 +154,7 @@ class TCPServer:
                 s.bind((self.host, self.port))
                 s.listen()
                 print(f"🚀 Serwer nasłuchuje na {self.host}:{self.port}")
-            except Exception as e:
+            except OSError as e:
                 print(f"❌ Błąd przy uruchomieniu serwera: {e}")
                 return
 
@@ -73,36 +162,30 @@ class TCPServer:
                 while True:
                     conn, addr = s.accept()
                     print(f"🔌 Połączono z {addr}")
-                    client_thread = Thread(target=self.handle_client, args=(conn, addr))
-                    client_thread.start()
+                    Thread(target=self.handle_client, args=(conn, addr), daemon=True).start()
             except KeyboardInterrupt:
                 print("🛑 Serwer zatrzymany ręcznie.")
-            except Exception as e:
-                print(f"❌ Błąd działania serwera: {e}")
 
     def handle_client(self, conn, addr):
         with conn:
             try:
-                data = conn.recv(4096).decode()  # większy bufor
-                print(f"📥 Odebrano od {addr}: {data}")
-                if not data:
+                raw, parsed = recv_json(conn)
+                print(f"📥 Odebrano od {addr}: {raw!r}")
+                if not raw:
                     return
 
-                parsed = json.loads(data)
+                if parsed is None:
+                    print("⚠️ Nieprawidłowy format JSON")
+                    conn.sendall(b"Blad danych JSON\n")
+                    return
 
-                # --- Jeśli lista obiektów ---
                 if isinstance(parsed, list):
                     print(f"📦 Odebrano listę {len(parsed)} rekordów")
-                    success_count = 0
-                    for item in parsed:
-                        if update_machine_part_stat(item):
-                            success_count += 1
+                    success_count = update_many(parsed)
                     conn.sendall(f"OK - zaktualizowano {success_count}/{len(parsed)} rekordów\n".encode())
 
-                # --- Jeśli pojedynczy obiekt ---
                 elif isinstance(parsed, dict):
-                    success = update_machine_part_stat(parsed)
-                    if success:
+                    if update_many([parsed]):
                         conn.sendall(b"OK - pojedynczy rekord zaktualizowany\n")
                     else:
                         conn.sendall(b"Nie znaleziono czesci\n")
@@ -110,15 +193,14 @@ class TCPServer:
                 else:
                     conn.sendall(b"Blad - nieprawidlowy format JSON\n")
 
-            except json.JSONDecodeError:
-                print("⚠️ Nieprawidłowy format JSON")
-                conn.sendall(b"Blad danych JSON\n")
             except Exception as e:
                 print(f"❌ Błąd klienta {addr}: {e}")
                 traceback.print_exc()
-                conn.sendall(b"Blad serwera\n")
+                try:
+                    conn.sendall(b"Blad serwera\n")
+                except OSError:
+                    pass  # klient juz sie rozlaczyl
 
 
 if __name__ == "__main__":
-    server = TCPServer(port=4200)
-    server.start()
+    TCPServer().start()

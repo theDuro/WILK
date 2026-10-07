@@ -1,8 +1,9 @@
 @echo off
-REM Uruchamia oba skrypty Pythona po starcie systemu
+REM Uruchamia blendy.py (alarmy z PLC, port TCP 4000) – np. z autostartu Windows.
+REM Okno musi pozostac otwarte, dopoki skrypt ma dzialac.
 
-REM pierwszy skrypt
-python "C:\Users\dawid\Desktop\scripts\blendy.py"
+set "SCRIPTS_DIR=C:\Users\dawid\Desktop\scripts"
 
+python "%SCRIPTS_DIR%\blendy.py"
 
 exit

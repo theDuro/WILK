@@ -1,4 +1,6 @@
-from typing import Optional, Dict
+"""DTO maszyny (tabela machines)."""
+
+from typing import Dict
 from dataclasses import dataclass
 
 @dataclass
