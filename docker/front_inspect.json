@@ -1,0 +1,238 @@
+[
+    {
+        "Id": "4350a9aea1d30b3529e0e3648f48607f994b9a77caddedd83ebf1a0d1d16af79",
+        "Created": "2026-10-05T05:03:53.510911872Z",
+        "Path": "docker-entrypoint.sh",
+        "Args": [
+            "serve",
+            "-s",
+            "build",
+            "-l",
+            "8080"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 516798,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-10-05T05:03:53.5703742Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:480263369d92237b055a6699894b25cbfbdcb9fe2d52b7aba661aa432ba8d5a7",
+        "ResolvConfPath": "/var/lib/docker/containers/4350a9aea1d30b3529e0e3648f48607f994b9a77caddedd83ebf1a0d1d16af79/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/4350a9aea1d30b3529e0e3648f48607f994b9a77caddedd83ebf1a0d1d16af79/hostname",
+        "HostsPath": "/var/lib/docker/containers/4350a9aea1d30b3529e0e3648f48607f994b9a77caddedd83ebf1a0d1d16af79/hosts",
+        "LogPath": "/var/lib/docker/containers/4350a9aea1d30b3529e0e3648f48607f994b9a77caddedd83ebf1a0d1d16af79/4350a9aea1d30b3529e0e3648f48607f994b9a77caddedd83ebf1a0d1d16af79-json.log",
+        "Name": "/autosoft_front",
+        "RestartCount": 0,
+        "Driver": "overlayfs",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "bridge",
+            "PortBindings": {
+                "8080/tcp": [
+                    {
+                        "HostIp": "",
+                        "HostPort": "8080"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                30,
+                120
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": [],
+            "BlkioDeviceWriteBps": [],
+            "BlkioDeviceReadIOps": [],
+            "BlkioDeviceWriteIOps": [],
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": [],
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware",
+                "/sys/devices/virtual/powercap"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": null,
+            "Name": "overlayfs"
+        },
+        "Mounts": [],
+        "Config": {
+            "Hostname": "4350a9aea1d3",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "8080/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "NODE_VERSION=18.20.8",
+                "YARN_VERSION=1.22.22"
+            ],
+            "Cmd": [
+                "serve",
+                "-s",
+                "build",
+                "-l",
+                "8080"
+            ],
+            "Image": "theduro/new-front-21.04:latest",
+            "Volumes": null,
+            "WorkingDir": "/app",
+            "Entrypoint": [
+                "docker-entrypoint.sh"
+            ],
+            "OnBuild": null,
+            "Labels": {},
+            "StopTimeout": 1
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "d5b105988134a63a32ed8c714053df4f15eec903b43cb3cae6ce0112a66b3caf",
+            "SandboxKey": "/var/run/docker/netns/d5b105988134",
+            "Ports": {
+                "8080/tcp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "8080"
+                    },
+                    {
+                        "HostIp": "::",
+                        "HostPort": "8080"
+                    }
+                ]
+            },
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "6ff8325b4643dc9b9d2d0fdae1149cfa3ebc04b2a0f28e4b32714c815f032a65",
+            "Gateway": "172.17.0.1",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "172.17.0.4",
+            "IPPrefixLen": 16,
+            "IPv6Gateway": "",
+            "MacAddress": "06:99:b6:17:77:8b",
+            "Networks": {
+                "bridge": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "MacAddress": "06:99:b6:17:77:8b",
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "72c551cc53698cae490437085b09810f0f009ca344a8f596700dabee423d3774",
+                    "EndpointID": "6ff8325b4643dc9b9d2d0fdae1149cfa3ebc04b2a0f28e4b32714c815f032a65",
+                    "Gateway": "172.17.0.1",
+                    "IPAddress": "172.17.0.4",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": null
+                }
+            }
+        },
+        "ImageManifestDescriptor": {
+            "mediaType": "application/vnd.oci.image.manifest.v1+json",
+            "digest": "sha256:4a0bee0782e2f26f40896708705d26959636325d46ab9ef28af0f4f50af5a008",
+            "size": 1625,
+            "platform": {
+                "architecture": "amd64",
+                "os": "linux"
+            }
+        }
+    }
+]

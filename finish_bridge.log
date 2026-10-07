@@ -1,0 +1,563 @@
+2026-06-09 21:33:19,598  INFO      =======================================================
+2026-06-09 21:33:19,599  INFO        SprFinishApl Bridge
+2026-06-09 21:33:19,599  INFO        TCP IN  : 4400  (PLC wysyla SSCC)
+2026-06-09 21:33:19,599  INFO        TCP OUT : 4401  (PLC odbiera OK/NOK)
+2026-06-09 21:33:19,599  INFO        WMS     : http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl
+2026-06-09 21:33:19,599  INFO      =======================================================
+2026-06-09 21:33:19,600  INFO      🚀 Bridge uruchomiony
+2026-06-09 21:33:19,600  INFO      📥 INPUT nasluchuje na porcie 4400
+2026-06-09 21:33:19,600  INFO      📤 OUTPUT nasluchuje na porcie 4401
+2026-06-09 21:33:24,780  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 60418)
+2026-06-09 21:33:24,780  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 57996)
+2026-06-10 07:31:59,517  INFO      =======================================================
+2026-06-10 07:31:59,517  INFO        SprFinishApl Bridge
+2026-06-10 07:31:59,517  INFO        TCP IN  : 4400  (PLC wysyla SSCC)
+2026-06-10 07:31:59,517  INFO        TCP OUT : 4401  (PLC odbiera OK/NOK)
+2026-06-10 07:31:59,517  INFO        WMS     : http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl
+2026-06-10 07:31:59,517  INFO      =======================================================
+2026-06-10 07:31:59,518  INFO      🚀 Bridge uruchomiony
+2026-06-10 07:31:59,518  INFO      📤 OUTPUT nasluchuje na porcie 4401
+2026-06-10 07:31:59,518  INFO      📥 INPUT nasluchuje na porcie 4400
+2026-06-10 07:31:59,535  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 50858)
+2026-06-10 07:32:09,535  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 55345)
+2026-06-10 07:33:35,187  DEBUG     📨 RAW: {"sscc": "020012340000738"}
+2026-06-10 07:33:35,188  INFO      📦 Odebrano SSCC: [020012340000738] od ('192.168.20.3', 55345)
+2026-06-10 07:33:35,188  INFO      💾 SSCC dodane do kolejki
+2026-06-10 07:33:35,196  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000738
+2026-06-10 07:33:35,208  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-10 07:33:35,308  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 71
+2026-06-10 07:33:35,309  DEBUG     WMS HTTP=200 body={"SPR_FINISH_APL_RES_HR":{"status":"ERROR","message":"SSCC not found"}}
+2026-06-10 07:33:35,309  WARNING   ❌ WMS blad  sscc=020012340000738  msg=SSCC not found
+2026-06-10 07:33:35,309  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 50858)
+2026-06-10 07:33:37,191  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 65522)
+2026-06-10 07:33:37,321  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 58583)
+2026-06-10 07:35:27,019  INFO      Bridge zatrzymany (Ctrl+C)
+2026-06-11 09:12:58,940  INFO      =======================================================
+2026-06-11 09:12:58,941  INFO        SprFinishApl Bridge
+2026-06-11 09:12:58,941  INFO        TCP IN  : 4400  (PLC wysyla SSCC)
+2026-06-11 09:12:58,941  INFO        TCP OUT : 4401  (PLC odbiera OK/NOK)
+2026-06-11 09:12:58,941  INFO        WMS     : http://192.168.1.36:8080/WilkRestServer/Wilk/SprFinishApl
+2026-06-11 09:12:58,941  INFO      =======================================================
+2026-06-11 09:12:58,942  INFO      🚀 Bridge uruchomiony
+2026-06-11 09:12:58,942  INFO      📥 INPUT nasluchuje na porcie 4400
+2026-06-11 09:12:58,942  INFO      📤 OUTPUT nasluchuje na porcie 4401
+2026-06-11 09:13:09,760  INFO      =======================================================
+2026-06-11 09:13:09,761  INFO        SprFinishApl Bridge
+2026-06-11 09:13:09,761  INFO        TCP IN  : 4400  (PLC wysyla SSCC)
+2026-06-11 09:13:09,761  INFO        TCP OUT : 4401  (PLC odbiera OK/NOK)
+2026-06-11 09:13:09,761  INFO        WMS     : http://192.168.1.36:8080/WilkRestServer/Wilk/SprFinishApl
+2026-06-11 09:13:09,761  INFO      =======================================================
+2026-06-11 09:13:09,762  INFO      🚀 Bridge uruchomiony
+2026-06-11 09:13:09,763  INFO      📤 OUTPUT nasluchuje na porcie 4401
+2026-06-11 09:13:09,763  INFO      📥 INPUT nasluchuje na porcie 4400
+2026-06-11 09:13:13,380  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 53903)
+2026-06-11 09:13:13,380  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 63195)
+2026-06-11 15:02:22,965  DEBUG     📨 RAW: {"sscc": "020012340000847575"}
+2026-06-11 15:02:22,968  INFO      📦 Odebrano SSCC: [020012340000847575] od ('192.168.20.3', 63195)
+2026-06-11 15:02:22,969  INFO      💾 SSCC dodane do kolejki
+2026-06-11 15:02:23,043  INFO      ➡️ POST http://192.168.1.36:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000847575
+2026-06-11 15:02:23,062  DEBUG     Starting new HTTP connection (1): 192.168.1.36:8080
+2026-06-11 15:02:23,086  DEBUG     http://192.168.1.36:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 404 792
+2026-06-11 15:02:23,087  DEBUG     WMS HTTP=404 body=<!doctype html><html lang="en"><head><title>HTTP Status 404 – Not Found</title><style type="text/css">body {font-family:Tahoma,Arial,sans-serif;} h1, h2, h3, b {color:white;background-color:#525D76;} 
+2026-06-11 15:02:23,088  ERROR     ❌ WMS niepoprawna odpowiedz: <!doctype html><html lang="en"><head><title>HTTP Status 404 – Not Found</title><style type="text/css
+2026-06-11 15:02:23,088  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 53903)
+2026-06-11 15:02:24,975  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 63894)
+2026-06-11 15:02:25,101  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 61355)
+2026-06-11 15:23:58,333  INFO      Bridge zatrzymany (Ctrl+C)
+2026-06-11 15:24:40,772  INFO      =======================================================
+2026-06-11 15:24:40,772  INFO        SprFinishApl Bridge
+2026-06-11 15:24:40,772  INFO        TCP IN  : 4400  (PLC wysyla SSCC)
+2026-06-11 15:24:40,772  INFO        TCP OUT : 4401  (PLC odbiera OK/NOK)
+2026-06-11 15:24:40,772  INFO        WMS     : http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl
+2026-06-11 15:24:40,773  INFO      =======================================================
+2026-06-11 15:24:40,773  INFO      🚀 Bridge uruchomiony
+2026-06-11 15:24:40,774  INFO      📤 OUTPUT nasluchuje na porcie 4401
+2026-06-11 15:24:40,774  INFO      📥 INPUT nasluchuje na porcie 4400
+2026-06-11 15:24:51,287  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 54046)
+2026-06-11 15:24:51,287  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 61776)
+2026-06-11 15:34:20,512  DEBUG     📨 RAW: {"sscc": "020012340000847575"}
+2026-06-11 15:34:20,513  INFO      📦 Odebrano SSCC: [020012340000847575] od ('192.168.20.3', 54046)
+2026-06-11 15:34:20,514  INFO      💾 SSCC dodane do kolejki
+2026-06-11 15:34:20,586  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000847575
+2026-06-11 15:34:20,590  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-11 15:34:21,324  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 43
+2026-06-11 15:34:21,325  DEBUG     WMS HTTP=200 body={"status":"ERROR","message":"SSCC not set"}
+2026-06-11 15:34:21,325  WARNING   ❌ WMS blad  sscc=020012340000847575  msg=
+2026-06-11 15:34:21,326  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 61776)
+2026-06-11 15:34:22,517  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 50993)
+2026-06-11 15:34:23,335  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 64318)
+2026-06-11 15:35:03,546  DEBUG     📨 RAW: {"sscc": "020012340000847582"}
+2026-06-11 15:35:03,546  INFO      📦 Odebrano SSCC: [020012340000847582] od ('192.168.20.3', 50993)
+2026-06-11 15:35:03,547  INFO      💾 SSCC dodane do kolejki
+2026-06-11 15:35:03,552  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000847582
+2026-06-11 15:35:03,555  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-11 15:35:03,619  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 43
+2026-06-11 15:35:03,620  DEBUG     WMS HTTP=200 body={"status":"ERROR","message":"SSCC not set"}
+2026-06-11 15:35:03,620  WARNING   ❌ WMS blad  sscc=020012340000847582  msg=
+2026-06-11 15:35:03,620  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 64318)
+2026-06-11 15:35:05,550  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 57580)
+2026-06-11 15:35:05,629  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 55585)
+2026-06-11 15:41:25,458  INFO      =======================================================
+2026-06-11 15:41:25,459  INFO        SprFinishApl Bridge
+2026-06-11 15:41:25,459  INFO        TCP IN  : 4400  (PLC wysyla SSCC)
+2026-06-11 15:41:25,459  INFO        TCP OUT : 4401  (PLC odbiera OK/NOK)
+2026-06-11 15:41:25,459  INFO        WMS     : http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl
+2026-06-11 15:41:25,459  INFO      =======================================================
+2026-06-11 15:41:25,460  INFO      🚀 Bridge uruchomiony
+2026-06-11 15:41:25,460  INFO      📥 INPUT nasluchuje na porcie 4400
+2026-06-11 15:41:25,460  INFO      📤 OUTPUT nasluchuje na porcie 4401
+2026-06-11 15:41:27,981  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 55822)
+2026-06-11 15:41:27,981  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 50948)
+2026-06-11 15:43:40,213  DEBUG     📨 RAW: {"sscc": "020012340000847582"}
+2026-06-11 15:43:40,214  INFO      📦 Odebrano SSCC: [020012340000847582] od ('192.168.20.3', 50948)
+2026-06-11 15:43:40,215  INFO      💾 SSCC dodane do kolejki
+2026-06-11 15:43:40,300  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000847582
+2026-06-11 15:43:40,303  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-11 15:43:40,399  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 50
+2026-06-11 15:43:40,400  DEBUG     WMS HTTP=200 body={"status":"ERROR","message":"Transport not found"}
+2026-06-11 15:43:40,400  WARNING   ❌ WMS blad  sscc=020012340000847582  msg=
+2026-06-11 15:43:40,401  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 55822)
+2026-06-11 15:43:42,219  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 53771)
+2026-06-11 15:43:42,408  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 54312)
+2026-06-11 15:57:20,136  DEBUG     📨 RAW: {"sscc": "020012340000847582"}
+2026-06-11 15:57:20,137  INFO      📦 Odebrano SSCC: [020012340000847582] od ('192.168.20.3', 53771)
+2026-06-11 15:57:20,138  INFO      💾 SSCC dodane do kolejki
+2026-06-11 15:57:20,182  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000847582
+2026-06-11 15:57:20,183  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-11 15:57:20,278  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 45
+2026-06-11 15:57:20,279  DEBUG     WMS HTTP=200 body={"status":"ERROR","message":"SSCC not found"}
+2026-06-11 15:57:20,279  WARNING   ❌ WMS blad  sscc=020012340000847582  msg=
+2026-06-11 15:57:20,279  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 54312)
+2026-06-11 15:57:22,142  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 54626)
+2026-06-11 15:57:22,291  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 59364)
+2026-06-11 15:57:44,020  DEBUG     📨 RAW: {"sscc": "020012340000847612"}
+2026-06-11 15:57:44,020  INFO      📦 Odebrano SSCC: [020012340000847612] od ('192.168.20.3', 54626)
+2026-06-11 15:57:44,020  INFO      💾 SSCC dodane do kolejki
+2026-06-11 15:57:44,096  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000847612
+2026-06-11 15:57:44,097  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-11 15:57:44,276  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 50
+2026-06-11 15:57:44,278  DEBUG     WMS HTTP=200 body={"status":"OK","message":"Transport order closed"}
+2026-06-11 15:57:44,278  WARNING   ❌ WMS blad  sscc=020012340000847612  msg=
+2026-06-11 15:57:44,279  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 59364)
+2026-06-11 15:57:46,023  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 62528)
+2026-06-11 15:57:46,288  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 58435)
+2026-06-12 07:22:58,406  INFO      =======================================================
+2026-06-12 07:22:58,406  INFO        SprFinishApl Bridge
+2026-06-12 07:22:58,406  INFO        TCP IN  : 4400  (PLC wysyla SSCC)
+2026-06-12 07:22:58,406  INFO        TCP OUT : 4401  (PLC odbiera OK/NOK)
+2026-06-12 07:22:58,406  INFO        WMS     : http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl
+2026-06-12 07:22:58,406  INFO      =======================================================
+2026-06-12 07:22:58,407  INFO      🚀 Bridge uruchomiony
+2026-06-12 07:22:58,407  INFO      📤 OUTPUT nasluchuje na porcie 4401
+2026-06-12 07:22:58,407  INFO      📥 INPUT nasluchuje na porcie 4400
+2026-06-12 07:23:00,697  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 53188)
+2026-06-12 07:23:00,698  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 60868)
+2026-06-12 10:19:14,634  DEBUG     📨 RAW: {"sscc": "020012340000848442"}
+2026-06-12 10:19:14,636  INFO      📦 Odebrano SSCC: [020012340000848442] od ('192.168.20.3', 53188)
+2026-06-12 10:19:14,637  INFO      💾 SSCC dodane do kolejki
+2026-06-12 10:19:14,667  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000848442
+2026-06-12 10:19:14,678  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-12 10:19:14,795  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 43
+2026-06-12 10:19:14,796  DEBUG     WMS HTTP=200 body={"status":"ERROR","message":"SSCC not set"}
+2026-06-12 10:19:14,796  WARNING   ❌ WMS blad  sscc=020012340000848442  status=ERROR  msg=SSCC not set
+2026-06-12 10:19:14,796  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 60868)
+2026-06-12 10:19:16,643  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 62257)
+2026-06-12 10:19:16,808  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 56816)
+2026-06-12 10:23:02,264  INFO      Bridge zatrzymany (Ctrl+C)
+2026-06-12 10:23:02,737  INFO      =======================================================
+2026-06-12 10:23:02,737  INFO        SprFinishApl Bridge
+2026-06-12 10:23:02,737  INFO        TCP IN  : 4400  (PLC wysyla SSCC)
+2026-06-12 10:23:02,737  INFO        TCP OUT : 4401  (PLC odbiera OK/NOK)
+2026-06-12 10:23:02,737  INFO        WMS     : http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl
+2026-06-12 10:23:02,737  INFO      =======================================================
+2026-06-12 10:23:02,738  INFO      🚀 Bridge uruchomiony
+2026-06-12 10:23:02,738  INFO      📤 OUTPUT nasluchuje na porcie 4401
+2026-06-12 10:23:02,738  INFO      📥 INPUT nasluchuje na porcie 4400
+2026-06-12 10:23:04,299  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 50670)
+2026-06-12 10:23:04,299  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 53513)
+2026-06-12 10:23:15,205  INFO      =======================================================
+2026-06-12 10:23:15,206  INFO        SprFinishApl Bridge
+2026-06-12 10:23:15,206  INFO        TCP IN  : 4400  (PLC wysyla SSCC)
+2026-06-12 10:23:15,206  INFO        TCP OUT : 4401  (PLC odbiera OK/NOK)
+2026-06-12 10:23:15,206  INFO        WMS     : http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl
+2026-06-12 10:23:15,206  INFO      =======================================================
+2026-06-12 10:23:15,207  INFO      🚀 Bridge uruchomiony
+2026-06-12 10:23:15,207  INFO      📤 OUTPUT nasluchuje na porcie 4401
+2026-06-12 10:23:15,207  INFO      📥 INPUT nasluchuje na porcie 4400
+2026-06-12 10:23:16,189  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 61521)
+2026-06-12 10:23:16,190  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 51766)
+2026-06-12 11:02:15,454  DEBUG     📨 RAW: {"sscc": "020012340000848442"}
+2026-06-12 11:02:15,456  INFO      📦 Odebrano SSCC: [020012340000848442] od ('192.168.20.3', 51766)
+2026-06-12 11:02:15,456  INFO      💾 SSCC dodane do kolejki
+2026-06-12 11:02:15,543  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000848442
+2026-06-12 11:02:15,548  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-12 11:02:15,592  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 500 38
+2026-06-12 11:02:15,593  DEBUG     WMS HTTP=500 body="Invalid or not suitable JSON request"
+2026-06-12 11:02:15,593  ERROR     ❌ WMS niepoprawna odpowiedz: "Invalid or not suitable JSON request"
+2026-06-12 11:02:15,593  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 61521)
+2026-06-12 11:02:17,461  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 64637)
+2026-06-12 11:02:17,604  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 52368)
+2026-06-12 11:04:47,915  DEBUG     📨 RAW: {"sscc": "020012340000848503"}
+2026-06-12 11:04:47,916  INFO      📦 Odebrano SSCC: [020012340000848503] od ('192.168.20.3', 64637)
+2026-06-12 11:04:47,916  INFO      💾 SSCC dodane do kolejki
+2026-06-12 11:04:47,979  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000848503
+2026-06-12 11:04:47,981  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-12 11:04:48,032  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 500 38
+2026-06-12 11:04:48,033  DEBUG     WMS HTTP=500 body="Invalid or not suitable JSON request"
+2026-06-12 11:04:48,033  ERROR     ❌ WMS niepoprawna odpowiedz: "Invalid or not suitable JSON request"
+2026-06-12 11:04:48,033  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 52368)
+2026-06-12 11:04:49,919  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 50219)
+2026-06-12 11:04:50,043  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 54100)
+2026-06-12 11:07:05,793  DEBUG     📨 RAW: {"sscc": "020012340000848503"}
+2026-06-12 11:07:05,794  INFO      📦 Odebrano SSCC: [020012340000848503] od ('192.168.20.3', 50219)
+2026-06-12 11:07:05,794  INFO      💾 SSCC dodane do kolejki
+2026-06-12 11:07:05,840  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000848503
+2026-06-12 11:07:05,842  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-12 11:07:05,888  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 500 38
+2026-06-12 11:07:05,889  DEBUG     WMS HTTP=500 body="Invalid or not suitable JSON request"
+2026-06-12 11:07:05,889  ERROR     ❌ WMS niepoprawna odpowiedz: "Invalid or not suitable JSON request"
+2026-06-12 11:07:05,890  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 54100)
+2026-06-12 11:07:07,799  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 60206)
+2026-06-12 11:07:07,899  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 62760)
+2026-06-12 11:07:12,258  DEBUG     📨 RAW: {"sscc": "020012340000848503"}
+2026-06-12 11:07:12,260  INFO      📦 Odebrano SSCC: [020012340000848503] od ('192.168.20.3', 60206)
+2026-06-12 11:07:12,260  INFO      💾 SSCC dodane do kolejki
+2026-06-12 11:07:12,321  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000848503
+2026-06-12 11:07:12,323  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-12 11:07:12,360  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 500 38
+2026-06-12 11:07:12,361  DEBUG     WMS HTTP=500 body="Invalid or not suitable JSON request"
+2026-06-12 11:07:12,361  ERROR     ❌ WMS niepoprawna odpowiedz: "Invalid or not suitable JSON request"
+2026-06-12 11:07:12,361  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 62760)
+2026-06-12 11:07:14,265  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 64336)
+2026-06-12 11:07:14,372  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 61075)
+2026-06-12 11:07:15,732  DEBUG     📨 RAW: {"sscc": "020012340000848503"}
+2026-06-12 11:07:15,732  INFO      📦 Odebrano SSCC: [020012340000848503] od ('192.168.20.3', 64336)
+2026-06-12 11:07:15,733  INFO      💾 SSCC dodane do kolejki
+2026-06-12 11:07:15,779  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000848503
+2026-06-12 11:07:15,782  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-12 11:07:15,810  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 500 38
+2026-06-12 11:07:15,811  DEBUG     WMS HTTP=500 body="Invalid or not suitable JSON request"
+2026-06-12 11:07:15,813  ERROR     ❌ WMS niepoprawna odpowiedz: "Invalid or not suitable JSON request"
+2026-06-12 11:07:15,813  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 61075)
+2026-06-12 11:07:17,735  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 58076)
+2026-06-12 11:07:17,821  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 49334)
+2026-06-12 11:16:19,524  INFO      Bridge zatrzymany (Ctrl+C)
+2026-06-12 11:16:30,918  INFO      =======================================================
+2026-06-12 11:16:30,918  INFO        SprFinishApl Bridge
+2026-06-12 11:16:30,918  INFO        TCP IN  : 4400  (PLC wysyla SSCC)
+2026-06-12 11:16:30,919  INFO        TCP OUT : 4401  (PLC odbiera OK/NOK)
+2026-06-12 11:16:30,919  INFO        WMS     : http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl
+2026-06-12 11:16:30,919  INFO      =======================================================
+2026-06-12 11:16:30,920  INFO      🚀 Bridge uruchomiony
+2026-06-12 11:16:30,920  INFO      📥 INPUT nasluchuje na porcie 4400
+2026-06-12 11:16:30,920  INFO      📤 OUTPUT nasluchuje na porcie 4401
+2026-06-12 11:16:38,504  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 57392)
+2026-06-12 11:16:38,504  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 50210)
+2026-06-12 11:19:58,144  DEBUG     📨 RAW: {"sscc": "020012340000848503"}
+2026-06-12 11:19:58,145  INFO      📦 Odebrano SSCC: [020012340000848503] od ('192.168.20.3', 57392)
+2026-06-12 11:19:58,146  INFO      💾 SSCC dodane do kolejki
+2026-06-12 11:19:58,240  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000848503
+2026-06-12 11:19:58,246  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-12 11:19:58,333  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 50
+2026-06-12 11:19:58,335  DEBUG     WMS HTTP=200 body={"status":"ERROR","message":"Transport not found"}
+2026-06-12 11:19:58,335  WARNING   ❌ WMS blad  sscc=020012340000848503  status=ERROR  msg=Transport not found
+2026-06-12 11:19:58,335  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 50210)
+2026-06-12 11:20:00,150  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 56748)
+2026-06-12 11:20:00,345  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 52227)
+2026-06-12 11:20:02,703  DEBUG     📨 RAW: {"sscc": "020012340000848503"}
+2026-06-12 11:20:02,704  INFO      📦 Odebrano SSCC: [020012340000848503] od ('192.168.20.3', 56748)
+2026-06-12 11:20:02,704  INFO      💾 SSCC dodane do kolejki
+2026-06-12 11:20:02,761  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000848503
+2026-06-12 11:20:02,762  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-12 11:20:02,823  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 50
+2026-06-12 11:20:02,824  DEBUG     WMS HTTP=200 body={"status":"ERROR","message":"Transport not found"}
+2026-06-12 11:20:02,824  WARNING   ❌ WMS blad  sscc=020012340000848503  status=ERROR  msg=Transport not found
+2026-06-12 11:20:02,824  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 52227)
+2026-06-12 11:20:04,708  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 57119)
+2026-06-12 11:20:04,832  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 57701)
+2026-06-12 11:20:46,270  DEBUG     📨 RAW: {"sscc": "020012340000848503"}
+2026-06-12 11:20:46,271  INFO      📦 Odebrano SSCC: [020012340000848503] od ('192.168.20.3', 57119)
+2026-06-12 11:20:46,271  INFO      💾 SSCC dodane do kolejki
+2026-06-12 11:20:46,346  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000848503
+2026-06-12 11:20:46,347  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-12 11:20:46,412  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 50
+2026-06-12 11:20:46,413  DEBUG     WMS HTTP=200 body={"status":"ERROR","message":"Transport not found"}
+2026-06-12 11:20:46,414  WARNING   ❌ WMS blad  sscc=020012340000848503  status=ERROR  msg=Transport not found
+2026-06-12 11:20:46,414  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 57701)
+2026-06-12 11:20:48,276  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 55795)
+2026-06-12 11:20:48,424  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 60773)
+2026-06-12 11:54:36,094  DEBUG     📨 RAW: {"sscc": "020012340000848671"}
+2026-06-12 11:54:36,096  INFO      📦 Odebrano SSCC: [020012340000848671] od ('192.168.20.3', 55795)
+2026-06-12 11:54:36,096  INFO      💾 SSCC dodane do kolejki
+2026-06-12 11:54:36,127  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000848671
+2026-06-12 11:54:36,129  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-12 11:54:36,225  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 50
+2026-06-12 11:54:36,225  DEBUG     WMS HTTP=200 body={"status":"ERROR","message":"Transport not found"}
+2026-06-12 11:54:36,225  WARNING   ❌ WMS blad  sscc=020012340000848671  status=ERROR  msg=Transport not found
+2026-06-12 11:54:36,225  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 60773)
+2026-06-12 11:54:38,101  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 62756)
+2026-06-12 11:54:38,234  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 58457)
+2026-06-12 12:33:39,505  DEBUG     📨 RAW: {"sscc": "020012340000848688"}
+2026-06-12 12:33:39,506  INFO      📦 Odebrano SSCC: [020012340000848688] od ('192.168.20.3', 62756)
+2026-06-12 12:33:39,507  INFO      💾 SSCC dodane do kolejki
+2026-06-12 12:33:39,518  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000848688
+2026-06-12 12:33:39,520  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-12 12:33:39,712  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 0
+2026-06-12 12:33:39,716  DEBUG     WMS HTTP=200 body=
+2026-06-12 12:33:39,717  WARNING   ⚠️ WMS zwrocil puste body
+2026-06-12 12:33:39,718  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 58457)
+2026-06-12 12:33:41,513  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 56285)
+2026-06-12 12:33:41,726  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 64618)
+2026-06-12 12:33:44,830  DEBUG     📨 RAW: {"sscc": "020012340000848688"}
+2026-06-12 12:33:44,830  INFO      📦 Odebrano SSCC: [020012340000848688] od ('192.168.20.3', 56285)
+2026-06-12 12:33:44,831  INFO      💾 SSCC dodane do kolejki
+2026-06-12 12:33:44,845  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000848688
+2026-06-12 12:33:44,847  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-12 12:33:44,990  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 0
+2026-06-12 12:33:44,991  DEBUG     WMS HTTP=200 body=
+2026-06-12 12:33:44,991  WARNING   ⚠️ WMS zwrocil puste body
+2026-06-12 12:33:44,992  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 64618)
+2026-06-12 12:33:46,835  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 64357)
+2026-06-12 12:33:47,001  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 62079)
+2026-06-12 12:47:29,728  DEBUG     📨 RAW: {"sscc": "020012340000848718"}
+2026-06-12 12:47:29,730  INFO      📦 Odebrano SSCC: [020012340000848718] od ('192.168.20.3', 64357)
+2026-06-12 12:47:29,730  INFO      💾 SSCC dodane do kolejki
+2026-06-12 12:47:29,814  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000848718
+2026-06-12 12:47:29,816  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-12 12:47:29,983  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 0
+2026-06-12 12:47:29,984  DEBUG     WMS HTTP=200 body=
+2026-06-12 12:47:29,985  WARNING   ⚠️ WMS zwrocil puste body
+2026-06-12 12:47:29,985  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 62079)
+2026-06-12 12:47:31,735  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 64733)
+2026-06-12 12:47:31,995  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 52680)
+2026-06-12 13:43:49,984  DEBUG     📨 RAW: {"sscc": "020012340000848725"}
+2026-06-12 13:43:49,984  INFO      📦 Odebrano SSCC: [020012340000848725] od ('192.168.20.3', 64733)
+2026-06-12 13:43:49,984  INFO      💾 SSCC dodane do kolejki
+2026-06-12 13:43:50,056  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000848725
+2026-06-12 13:43:50,059  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-12 13:43:50,239  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 0
+2026-06-12 13:43:50,240  DEBUG     WMS HTTP=200 body=
+2026-06-12 13:43:50,240  WARNING   ⚠️ WMS zwrocil puste body
+2026-06-12 13:43:50,241  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 52680)
+2026-06-12 13:43:51,988  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 60040)
+2026-06-12 13:43:52,250  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 59005)
+2026-06-12 14:09:20,738  INFO      =======================================================
+2026-06-12 14:09:20,738  INFO        SprFinishApl Bridge
+2026-06-12 14:09:20,739  INFO        TCP IN  : 4400  (PLC wysyla SSCC)
+2026-06-12 14:09:20,739  INFO        TCP OUT : 4401  (PLC odbiera OK/NOK)
+2026-06-12 14:09:20,739  INFO        WMS     : http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl
+2026-06-12 14:09:20,739  INFO      =======================================================
+2026-06-12 14:09:20,739  INFO      🚀 Bridge uruchomiony
+2026-06-12 14:09:20,740  INFO      📥 INPUT nasluchuje na porcie 4400
+2026-06-12 14:09:20,740  INFO      📤 OUTPUT nasluchuje na porcie 4401
+2026-06-12 14:09:30,334  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 59104)
+2026-06-12 14:09:30,335  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 54747)
+2026-06-12 14:17:25,958  INFO      =======================================================
+2026-06-12 14:17:25,958  INFO        SprFinishApl Bridge
+2026-06-12 14:17:25,959  INFO        TCP IN  : 4400  (PLC wysyla SSCC)
+2026-06-12 14:17:25,959  INFO        TCP OUT : 4401  (PLC odbiera OK/NOK)
+2026-06-12 14:17:25,959  INFO        WMS     : http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl
+2026-06-12 14:17:25,959  INFO      =======================================================
+2026-06-12 14:17:25,960  INFO      🚀 Bridge uruchomiony
+2026-06-12 14:17:25,960  INFO      📥 INPUT nasluchuje na porcie 4400
+2026-06-12 14:17:25,960  INFO      📤 OUTPUT nasluchuje na porcie 4401
+2026-06-12 14:17:26,738  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 53283)
+2026-06-12 14:17:26,738  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 50626)
+2026-06-12 14:25:54,629  DEBUG     📨 RAW: {"sscc": "020012340000848732"}
+2026-06-12 14:25:54,630  INFO      📦 Odebrano SSCC: [020012340000848732] od ('192.168.20.3', 50626)
+2026-06-12 14:25:54,630  INFO      💾 SSCC dodane do kolejki
+2026-06-12 14:25:54,632  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000848732
+2026-06-12 14:25:54,635  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-12 14:25:54,720  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 50
+2026-06-12 14:25:54,720  DEBUG     WMS HTTP=200 body={"status":"ERROR","message":"Transport not found"}
+2026-06-12 14:25:54,720  WARNING   ❌ WMS blad  sscc=020012340000848732  status=ERROR  msg=Transport not found
+2026-06-12 14:25:54,720  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 53283)
+2026-06-12 14:25:56,635  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 64869)
+2026-06-12 14:25:56,727  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 55109)
+2026-06-16 14:15:29,420  DEBUG     📨 RAW: {"sscc": "020012340000851473"}
+2026-06-16 14:15:29,445  INFO      📦 Odebrano SSCC: [020012340000851473] od ('192.168.20.3', 64869)
+2026-06-16 14:15:29,449  INFO      💾 SSCC dodane do kolejki
+2026-06-16 14:15:29,511  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000851473
+2026-06-16 14:15:29,526  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-16 14:15:30,419  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 0
+2026-06-16 14:15:30,421  DEBUG     WMS HTTP=200 body=
+2026-06-16 14:15:30,421  INFO      ✅ WMS zwrocil puste body – traktujemy jako OK  sscc=020012340000851473
+2026-06-16 14:15:30,422  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 55109)
+2026-06-16 14:15:31,459  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 52775)
+2026-06-16 14:15:32,436  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 62384)
+2026-06-16 14:48:10,795  DEBUG     📨 RAW: {"sscc": "020012340000851480"}
+2026-06-16 14:48:10,795  INFO      📦 Odebrano SSCC: [020012340000851480] od ('192.168.20.3', 52775)
+2026-06-16 14:48:10,796  INFO      💾 SSCC dodane do kolejki
+2026-06-16 14:48:10,877  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000851480
+2026-06-16 14:48:10,880  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-16 14:48:11,108  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 0
+2026-06-16 14:48:11,109  DEBUG     WMS HTTP=200 body=
+2026-06-16 14:48:11,110  INFO      ✅ WMS zwrocil puste body – traktujemy jako OK  sscc=020012340000851480
+2026-06-16 14:48:11,110  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 62384)
+2026-06-16 14:48:12,804  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 55750)
+2026-06-16 14:48:13,122  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 57027)
+2026-06-16 15:02:18,018  DEBUG     📨 RAW: {"sscc": "020012340000851497"}
+2026-06-16 15:02:18,018  INFO      📦 Odebrano SSCC: [020012340000851497] od ('192.168.20.3', 55750)
+2026-06-16 15:02:18,018  INFO      💾 SSCC dodane do kolejki
+2026-06-16 15:02:18,024  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000851497
+2026-06-16 15:02:18,026  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-16 15:02:18,229  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 0
+2026-06-16 15:02:18,230  DEBUG     WMS HTTP=200 body=
+2026-06-16 15:02:18,231  INFO      ✅ WMS zwrocil puste body – traktujemy jako OK  sscc=020012340000851497
+2026-06-16 15:02:18,232  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 57027)
+2026-06-16 15:02:20,026  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 57411)
+2026-06-16 15:02:20,242  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 62699)
+2026-06-16 15:23:53,560  DEBUG     📨 RAW: {"sscc": "020012340000851503"}
+2026-06-16 15:23:53,561  INFO      📦 Odebrano SSCC: [020012340000851503] od ('192.168.20.3', 57411)
+2026-06-16 15:23:53,562  INFO      💾 SSCC dodane do kolejki
+2026-06-16 15:23:53,590  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000851503
+2026-06-16 15:23:53,592  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-16 15:23:53,774  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 0
+2026-06-16 15:23:53,775  DEBUG     WMS HTTP=200 body=
+2026-06-16 15:23:53,776  INFO      ✅ WMS zwrocil puste body – traktujemy jako OK  sscc=020012340000851503
+2026-06-16 15:23:53,776  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 62699)
+2026-06-16 15:23:55,569  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 57031)
+2026-06-16 15:23:55,792  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 63606)
+2026-06-16 15:37:58,309  DEBUG     📨 RAW: {"sscc": "020012340000851510"}
+2026-06-16 15:37:58,310  INFO      📦 Odebrano SSCC: [020012340000851510] od ('192.168.20.3', 57031)
+2026-06-16 15:37:58,311  INFO      💾 SSCC dodane do kolejki
+2026-06-16 15:37:58,356  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000851510
+2026-06-16 15:37:58,357  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-16 15:37:59,195  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 0
+2026-06-16 15:37:59,195  DEBUG     WMS HTTP=200 body=
+2026-06-16 15:37:59,196  INFO      ✅ WMS zwrocil puste body – traktujemy jako OK  sscc=020012340000851510
+2026-06-16 15:37:59,196  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 63606)
+2026-06-16 15:38:00,318  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 50991)
+2026-06-16 15:38:01,208  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 52016)
+2026-06-17 11:07:00,268  DEBUG     📨 RAW: {"sscc": "020012340000852210"}
+2026-06-17 11:07:00,271  INFO      📦 Odebrano SSCC: [020012340000852210] od ('192.168.20.3', 50991)
+2026-06-17 11:07:00,272  INFO      💾 SSCC dodane do kolejki
+2026-06-17 11:07:00,365  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000852210
+2026-06-17 11:07:00,369  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-17 11:07:00,548  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 0
+2026-06-17 11:07:00,549  DEBUG     WMS HTTP=200 body=
+2026-06-17 11:07:00,549  INFO      ✅ WMS zwrocil puste body – traktujemy jako OK  sscc=020012340000852210
+2026-06-17 11:07:00,550  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 52016)
+2026-06-17 11:07:02,279  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 61097)
+2026-06-17 11:07:02,567  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 54848)
+2026-06-17 11:42:43,368  DEBUG     📨 RAW: {"sscc": "020012340000852326"}
+2026-06-17 11:42:43,369  INFO      📦 Odebrano SSCC: [020012340000852326] od ('192.168.20.3', 61097)
+2026-06-17 11:42:43,370  INFO      💾 SSCC dodane do kolejki
+2026-06-17 11:42:43,380  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000852326
+2026-06-17 11:42:43,385  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-17 11:42:43,571  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 0
+2026-06-17 11:42:43,572  DEBUG     WMS HTTP=200 body=
+2026-06-17 11:42:43,572  INFO      ✅ WMS zwrocil puste body – traktujemy jako OK  sscc=020012340000852326
+2026-06-17 11:42:43,573  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 54848)
+2026-06-17 11:42:45,378  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 60083)
+2026-06-17 11:42:45,584  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 54036)
+2026-06-17 12:29:17,985  DEBUG     📨 RAW: {"sscc": "020012340000852449"}
+2026-06-17 12:29:17,987  INFO      📦 Odebrano SSCC: [020012340000852449] od ('192.168.20.3', 60083)
+2026-06-17 12:29:17,987  INFO      💾 SSCC dodane do kolejki
+2026-06-17 12:29:18,033  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000852449
+2026-06-17 12:29:18,037  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-17 12:29:18,190  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 0
+2026-06-17 12:29:18,191  DEBUG     WMS HTTP=200 body=
+2026-06-17 12:29:18,191  INFO      ✅ WMS zwrocil puste body – traktujemy jako OK  sscc=020012340000852449
+2026-06-17 12:29:18,192  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 54036)
+2026-06-17 12:29:19,993  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 54711)
+2026-06-17 12:29:20,203  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 51810)
+2026-06-17 12:45:29,815  DEBUG     📨 RAW: {"sscc": "020012340000852463"}
+2026-06-17 12:45:29,816  INFO      📦 Odebrano SSCC: [020012340000852463] od ('192.168.20.3', 54711)
+2026-06-17 12:45:29,816  INFO      💾 SSCC dodane do kolejki
+2026-06-17 12:45:29,838  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000852463
+2026-06-17 12:45:29,843  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-17 12:45:29,995  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 0
+2026-06-17 12:45:29,997  DEBUG     WMS HTTP=200 body=
+2026-06-17 12:45:29,997  INFO      ✅ WMS zwrocil puste body – traktujemy jako OK  sscc=020012340000852463
+2026-06-17 12:45:29,998  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 51810)
+2026-06-17 12:45:31,820  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 53251)
+2026-06-17 12:45:32,008  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 52192)
+2026-06-17 12:59:24,764  DEBUG     📨 RAW: {"sscc": "020012340000852548"}
+2026-06-17 12:59:24,766  INFO      📦 Odebrano SSCC: [020012340000852548] od ('192.168.20.3', 53251)
+2026-06-17 12:59:24,767  INFO      💾 SSCC dodane do kolejki
+2026-06-17 12:59:24,783  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000852548
+2026-06-17 12:59:24,787  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-17 12:59:24,944  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 0
+2026-06-17 12:59:24,945  DEBUG     WMS HTTP=200 body=
+2026-06-17 12:59:24,945  INFO      ✅ WMS zwrocil puste body – traktujemy jako OK  sscc=020012340000852548
+2026-06-17 12:59:24,945  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 52192)
+2026-06-17 12:59:26,772  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 51298)
+2026-06-17 12:59:26,953  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 62457)
+2026-06-17 13:39:51,570  DEBUG     📨 RAW: {"sscc": "020012340000852579"}
+2026-06-17 13:39:51,573  INFO      📦 Odebrano SSCC: [020012340000852579] od ('192.168.20.3', 51298)
+2026-06-17 13:39:51,573  INFO      💾 SSCC dodane do kolejki
+2026-06-17 13:39:51,615  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000852579
+2026-06-17 13:39:51,618  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-17 13:39:51,776  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 0
+2026-06-17 13:39:51,777  DEBUG     WMS HTTP=200 body=
+2026-06-17 13:39:51,777  INFO      ✅ WMS zwrocil puste body – traktujemy jako OK  sscc=020012340000852579
+2026-06-17 13:39:51,777  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 62457)
+2026-06-17 13:39:53,581  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 49429)
+2026-06-17 13:39:53,788  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 55045)
+2026-06-17 14:40:58,027  DEBUG     📨 RAW: {"sscc": "020012340000852586"}
+2026-06-17 14:40:58,028  INFO      📦 Odebrano SSCC: [020012340000852586] od ('192.168.20.3', 49429)
+2026-06-17 14:40:58,028  INFO      💾 SSCC dodane do kolejki
+2026-06-17 14:40:58,047  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000852586
+2026-06-17 14:40:58,049  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-17 14:40:58,210  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 0
+2026-06-17 14:40:58,212  DEBUG     WMS HTTP=200 body=
+2026-06-17 14:40:58,212  INFO      ✅ WMS zwrocil puste body – traktujemy jako OK  sscc=020012340000852586
+2026-06-17 14:40:58,213  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 55045)
+2026-06-17 14:41:00,031  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 49556)
+2026-06-17 14:41:00,221  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 50445)
+2026-06-17 15:00:24,795  DEBUG     📨 RAW: {"sscc": "020012340000852593"}
+2026-06-17 15:00:24,796  INFO      📦 Odebrano SSCC: [020012340000852593] od ('192.168.20.3', 49556)
+2026-06-17 15:00:24,797  INFO      💾 SSCC dodane do kolejki
+2026-06-17 15:00:24,820  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000852593
+2026-06-17 15:00:24,821  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-17 15:00:24,973  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 0
+2026-06-17 15:00:24,974  DEBUG     WMS HTTP=200 body=
+2026-06-17 15:00:24,974  INFO      ✅ WMS zwrocil puste body – traktujemy jako OK  sscc=020012340000852593
+2026-06-17 15:00:24,975  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 50445)
+2026-06-17 15:00:26,801  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 61709)
+2026-06-17 15:00:26,983  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 57786)
+2026-06-17 15:10:54,601  DEBUG     📨 RAW: {"sscc": "020012340000852609"}
+2026-06-17 15:10:54,602  INFO      📦 Odebrano SSCC: [020012340000852609] od ('192.168.20.3', 61709)
+2026-06-17 15:10:54,603  INFO      💾 SSCC dodane do kolejki
+2026-06-17 15:10:54,608  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000852609
+2026-06-17 15:10:54,612  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-17 15:10:54,764  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 0
+2026-06-17 15:10:54,765  DEBUG     WMS HTTP=200 body=
+2026-06-17 15:10:54,765  INFO      ✅ WMS zwrocil puste body – traktujemy jako OK  sscc=020012340000852609
+2026-06-17 15:10:54,765  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 57786)
+2026-06-17 15:10:56,609  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 49867)
+2026-06-17 15:10:56,777  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 63158)
+2026-06-17 15:24:49,482  DEBUG     📨 RAW: {"sscc": "020012340000852616"}
+2026-06-17 15:24:49,483  INFO      📦 Odebrano SSCC: [020012340000852616] od ('192.168.20.3', 49867)
+2026-06-17 15:24:49,484  INFO      💾 SSCC dodane do kolejki
+2026-06-17 15:24:49,554  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000852616
+2026-06-17 15:24:49,555  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-17 15:24:49,700  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 0
+2026-06-17 15:24:49,701  DEBUG     WMS HTTP=200 body=
+2026-06-17 15:24:49,702  INFO      ✅ WMS zwrocil puste body – traktujemy jako OK  sscc=020012340000852616
+2026-06-17 15:24:49,703  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 63158)
+2026-06-17 15:24:51,492  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 54446)
+2026-06-17 15:24:51,713  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 57759)
+2026-06-17 15:35:30,834  DEBUG     📨 RAW: {"sscc": "020012340000852623"}
+2026-06-17 15:35:30,835  INFO      📦 Odebrano SSCC: [020012340000852623] od ('192.168.20.3', 54446)
+2026-06-17 15:35:30,835  INFO      💾 SSCC dodane do kolejki
+2026-06-17 15:35:30,851  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000852623
+2026-06-17 15:35:30,854  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-17 15:35:31,664  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 0
+2026-06-17 15:35:31,666  DEBUG     WMS HTTP=200 body=
+2026-06-17 15:35:31,666  INFO      ✅ WMS zwrocil puste body – traktujemy jako OK  sscc=020012340000852623
+2026-06-17 15:35:31,667  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 57759)
+2026-06-17 15:35:32,842  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 62807)
+2026-06-17 15:35:33,679  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 58188)
+2026-06-17 15:53:06,426  DEBUG     📨 RAW: {"sscc": "020012340000852630"}
+2026-06-17 15:53:06,426  INFO      📦 Odebrano SSCC: [020012340000852630] od ('192.168.20.3', 62807)
+2026-06-17 15:53:06,426  INFO      💾 SSCC dodane do kolejki
+2026-06-17 15:53:06,470  INFO      ➡️ POST http://192.168.1.34:8080/WilkRestServer/Wilk/SprFinishApl  sscc=020012340000852630
+2026-06-17 15:53:06,471  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-06-17 15:53:06,619  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprFinishApl HTTP/1.1" 200 0
+2026-06-17 15:53:06,621  DEBUG     WMS HTTP=200 body=
+2026-06-17 15:53:06,621  INFO      ✅ WMS zwrocil puste body – traktujemy jako OK  sscc=020012340000852630
+2026-06-17 15:53:06,622  INFO      🔌 Rozlaczono OUTPUT: ('192.168.20.3', 58188)
+2026-06-17 15:53:08,431  INFO      🔗 INPUT polaczenie od: ('192.168.20.3', 61539)
+2026-06-17 15:53:08,631  INFO      🔗 OUTPUT polaczenie od: ('192.168.20.3', 54537)

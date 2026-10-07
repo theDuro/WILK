@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.04bff777.css",
+    "main.js": "/static/js/main.53495bb1.js",
+    "static/media/WIA.00.00.00.png": "/static/media/WIA.00.00.00.eb55da3f1f5e3dfcae75.png",
+    "static/media/WILK2.png": "/static/media/WILK2.2aa845a9acc6eac18569.png",
+    "static/media/Niverplast.png": "/static/media/Niverplast.ad1b637f8563898141bf.png",
+    "static/media/NiverplastV2.png": "/static/media/NiverplastV2.f3d7ec9ba39fd4167c7b.png",
+    "index.html": "/index.html",
+    "main.04bff777.css.map": "/static/css/main.04bff777.css.map",
+    "main.53495bb1.js.map": "/static/js/main.53495bb1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.04bff777.css",
+    "static/js/main.53495bb1.js"
+  ]
+}

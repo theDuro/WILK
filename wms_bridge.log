@@ -1,0 +1,1429 @@
+2026-09-10 10:25:53,278  INFO      ============================================================
+2026-09-10 10:25:53,279  INFO        WMS Bridge v4
+2026-09-10 10:25:53,279  INFO        TCP IN   : 4300  (PLC wysyla dane)
+2026-09-10 10:25:53,279  INFO        TCP OUT  : 4301  (PLC odbiera odpowiedz)
+2026-09-10 10:25:53,279  INFO        WMS SPR  : http://192.168.1.34:8080/WilkRestServer/Wilk/Spr
+2026-09-10 10:25:53,279  INFO        WMS LABEL: http://192.168.1.34:8080/WilkRestServer/Wilk/SprLabelPrint
+2026-09-10 10:25:53,279  INFO        FIRM_NR  : MAGH
+2026-09-10 10:25:53,279  INFO      ------------------------------------------------------------
+2026-09-10 10:25:53,281  INFO        MAPOWANIE: PLC PROD_SERIAL_NR -> WMS PRODUCT_NR     (produkt)
+2026-09-10 10:25:53,282  INFO                   PLC PRODUCT_NR     -> WMS PROD_SERIAL_NR (partia)
+2026-09-10 10:25:53,282  INFO      ------------------------------------------------------------
+2026-09-10 10:25:53,282  INFO        TRASA: [1] PLC->BRIDGE  [2] BRIDGE->WMS /Spr
+2026-09-10 10:25:53,282  INFO               [3] WMS->BRIDGE  [4] BRIDGE->WMS /SprLabelPrint
+2026-09-10 10:25:53,282  INFO               [5] WMS->BRIDGE  [6] BRIDGE->PLC
+2026-09-10 10:25:53,282  INFO      ============================================================
+2026-09-10 10:25:53,283  INFO      🚀 Serwery uruchomione
+2026-09-10 10:25:53,283  INFO      📥 Serwer INPUT dziala na porcie 4300
+2026-09-10 10:25:53,283  INFO      📤 Serwer OUTPUT dziala na porcie 4301
+2026-09-10 10:25:58,090  INFO      
+🔗 TRC-FAAE Klient OUTPUT polaczony: ('192.168.20.3', 55123)
+2026-09-10 10:25:58,091  INFO      🔗 TRC-C85A Klient INPUT polaczony: ('192.168.20.3', 59710)
+2026-09-10 10:26:25,289  INFO      TRC-C85A     · recv #1: +601 B  (razem 601 B)
+2026-09-10 10:26:25,289  INFO      TRC-C85A     · obciete 492 znakow wypelnienia po ']'
+2026-09-10 10:26:25,290  INFO      
+------------------------------------------------------------------------------
+TRC-C85A  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:26:25,290  INFO      TRC-C85A     zrodlo               : 192.168.20.3:59710
+2026-09-10 10:26:25,290  INFO      TRC-C85A     znakow               : 601
+2026-09-10 10:26:25,291  INFO      TRC-C85A     czas [ms]            : 27198.4
+2026-09-10 10:26:25,291  DEBUG     TRC-C85A     RAW BODY:
+'[{"POSITION_NR": "0", "PRODUCT_NR": "03/04/09/2026", "PROD_SERIAL_NR": "0100000039", "BU_QUANTITY": "44800"}]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            '
+2026-09-10 10:26:25,292  INFO      
+------------------------------------------------------------------------------
+TRC-C85A  [1] <== PLC  sparsowany JSON od PLC
+------------------------------------------------------------------------------
+2026-09-10 10:26:25,292  INFO      TRC-C85A     pozycji              : 1
+2026-09-10 10:26:25,292  INFO      TRC-C85A     JSON:
+[
+  {
+    "POSITION_NR": "0",
+    "PRODUCT_NR": "03/04/09/2026",
+    "PROD_SERIAL_NR": "0100000039",
+    "BU_QUANTITY": "44800"
+  }
+]
+2026-09-10 10:26:25,293  INFO      TRC-C85A     · dane w kolejce (dlugosc: 1)
+2026-09-10 10:26:25,293  INFO      TRC-FAAE     · pobrano z kolejki po 27.2 s  (zostalo: 0)
+2026-09-10 10:26:25,293  INFO      🔚 TRC-C85A Zamknieto INPUT: ('192.168.20.3', 59710)
+2026-09-10 10:26:25,294  INFO      
+------------------------------------------------------------------------------
+TRC-FAAE  [1] <== PLC  dane uzyte w tej transakcji
+------------------------------------------------------------------------------
+2026-09-10 10:26:25,294  INFO      TRC-FAAE     JSON:
+[
+  {
+    "POSITION_NR": "0",
+    "PRODUCT_NR": "03/04/09/2026",
+    "PROD_SERIAL_NR": "0100000039",
+    "BU_QUANTITY": "44800"
+  }
+]
+2026-09-10 10:26:25,295  INFO      TRC-FAAE     · mapowanie: PLC PROD_SERIAL_NR='0100000039' -> WMS PRODUCT_NR='0100000039'
+2026-09-10 10:26:25,295  INFO      TRC-FAAE     · mapowanie: PLC PRODUCT_NR='03/04/09/2026' -> WMS PROD_SERIAL_NR='03/04/09/2026'
+2026-09-10 10:26:25,295  INFO      
+------------------------------------------------------------------------------
+TRC-FAAE  [2] ==> WMS  POST /Spr  (zamowienie SPR)
+------------------------------------------------------------------------------
+2026-09-10 10:26:25,295  INFO      TRC-FAAE     URL                  : http://192.168.1.34:8080/WilkRestServer/Wilk/Spr
+2026-09-10 10:26:25,296  INFO      TRC-FAAE     C_ORDER_NR           : 202609100826256A2A4E
+2026-09-10 10:26:25,296  INFO      TRC-FAAE     pozycji              : 1
+2026-09-10 10:26:25,296  INFO      TRC-FAAE     JSON:
+{
+  "SPR_HEADER": [
+    {
+      "FIRM_NR": "MAGH",
+      "CUSTOMER_NR": "MAGH",
+      "C_ORDER_NR": "202609100826256A2A4E",
+      "DATE_SHIPPING": "2026/09/10",
+      "WH_NR": "MAGH",
+      "SPR_ITEM": [
+        {
+          "POSITION_NR": "0",
+          "PRODUCT_NR": "0100000039",
+          "PROD_SERIAL_NR": "03/04/09/2026",
+          "BU_QUANTITY": "44800"
+        }
+      ]
+    }
+  ]
+}
+2026-09-10 10:26:25,298  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-09-10 10:26:27,297  INFO      🔗 TRC-63AE Klient INPUT polaczony: ('192.168.20.3', 61166)
+2026-09-10 10:26:32,306  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/Spr HTTP/1.1" 200 174
+2026-09-10 10:26:32,308  INFO      
+------------------------------------------------------------------------------
+TRC-FAAE  [3] <== WMS  odpowiedz /Spr
+------------------------------------------------------------------------------
+2026-09-10 10:26:32,309  INFO      TRC-FAAE     HTTP                 : 200
+2026-09-10 10:26:32,309  INFO      TRC-FAAE     czas [ms]            : 7011.7
+2026-09-10 10:26:32,309  INFO      TRC-FAAE     dlugosc              : 173
+2026-09-10 10:26:32,310  DEBUG     TRC-FAAE     RAW BODY:
+{"c_order_nr":"202609100826256A2A4E","status":"OK","error":"IMPORT_COMPLETED","message":"Import zakończony sukcesem","ts":"2026-09-10T10:27:15Z","sscc":"020012340000738705"}
+2026-09-10 10:26:32,310  INFO      TRC-FAAE     JSON (sparsowany):
+{
+  "c_order_nr": "202609100826256A2A4E",
+  "status": "OK",
+  "error": "IMPORT_COMPLETED",
+  "message": "Import zakończony sukcesem",
+  "ts": "2026-09-10T10:27:15Z",
+  "sscc": "020012340000738705"
+}
+2026-09-10 10:26:32,310  INFO      TRC-FAAE     · ocena SPR: status='OK' error='IMPORT_COMPLETED' ==> PRZYJETE
+2026-09-10 10:26:32,311  INFO      TRC-FAAE     · SSCC: ['020012340000738705']  (sztuk: 1)
+2026-09-10 10:26:32,311  INFO      
+------------------------------------------------------------------------------
+TRC-FAAE  [4] ==> WMS  POST /SprLabelPrint  (proba 1 z 3)
+------------------------------------------------------------------------------
+2026-09-10 10:26:32,311  INFO      TRC-FAAE     URL                  : http://192.168.1.34:8080/WilkRestServer/Wilk/SprLabelPrint
+2026-09-10 10:26:32,311  INFO      TRC-FAAE     timeout [s]          : 10
+2026-09-10 10:26:32,311  INFO      TRC-FAAE     JSON:
+{
+  "c_order_nr": "202609100826256A2A4E",
+  "sscc": "020012340000738705"
+}
+2026-09-10 10:26:32,313  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-09-10 10:26:33,937  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprLabelPrint HTTP/1.1" 200 30
+2026-09-10 10:26:33,938  INFO      
+------------------------------------------------------------------------------
+TRC-FAAE  [5] <== WMS  odpowiedz /SprLabelPrint
+------------------------------------------------------------------------------
+2026-09-10 10:26:33,939  INFO      TRC-FAAE     HTTP                 : 200
+2026-09-10 10:26:33,939  INFO      TRC-FAAE     czas [ms]            : 1626.5
+2026-09-10 10:26:33,939  INFO      TRC-FAAE     dlugosc              : 30
+2026-09-10 10:26:33,939  DEBUG     TRC-FAAE     RAW BODY:
+{"status":"533_1","error":"1"}
+2026-09-10 10:26:33,940  INFO      TRC-FAAE     JSON (sparsowany):
+{
+  "status": "533_1",
+  "error": "1"
+}
+2026-09-10 10:26:33,940  INFO      TRC-FAAE     · klucze: ['status', 'error']
+2026-09-10 10:26:33,940  INFO      TRC-FAAE     · odpowiedz NIEPOPRAWNA: status='533_1'  error='1'
+2026-09-10 10:26:33,941  INFO      TRC-FAAE     · brakuje: ['sscc', 'picking_date', 'gross_weight_kg', 'SPR_LABEL_PRINT_RES_IT']
+2026-09-10 10:26:33,941  INFO      TRC-FAAE     · ponawiam za 1.0 s...
+2026-09-10 10:26:34,941  INFO      
+------------------------------------------------------------------------------
+TRC-FAAE  [4] ==> WMS  POST /SprLabelPrint  (proba 2 z 3)
+------------------------------------------------------------------------------
+2026-09-10 10:26:34,942  INFO      TRC-FAAE     URL                  : http://192.168.1.34:8080/WilkRestServer/Wilk/SprLabelPrint
+2026-09-10 10:26:34,942  INFO      TRC-FAAE     timeout [s]          : 10
+2026-09-10 10:26:34,942  INFO      TRC-FAAE     JSON:
+{
+  "c_order_nr": "202609100826256A2A4E",
+  "sscc": "020012340000738705"
+}
+2026-09-10 10:26:34,944  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-09-10 10:26:35,116  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprLabelPrint HTTP/1.1" 200 30
+2026-09-10 10:26:35,118  INFO      
+------------------------------------------------------------------------------
+TRC-FAAE  [5] <== WMS  odpowiedz /SprLabelPrint
+------------------------------------------------------------------------------
+2026-09-10 10:26:35,118  INFO      TRC-FAAE     HTTP                 : 200
+2026-09-10 10:26:35,118  INFO      TRC-FAAE     czas [ms]            : 175.1
+2026-09-10 10:26:35,119  INFO      TRC-FAAE     dlugosc              : 30
+2026-09-10 10:26:35,119  DEBUG     TRC-FAAE     RAW BODY:
+{"status":"533_1","error":"1"}
+2026-09-10 10:26:35,119  INFO      TRC-FAAE     JSON (sparsowany):
+{
+  "status": "533_1",
+  "error": "1"
+}
+2026-09-10 10:26:35,119  INFO      TRC-FAAE     · klucze: ['status', 'error']
+2026-09-10 10:26:35,120  INFO      TRC-FAAE     · odpowiedz NIEPOPRAWNA: status='533_1'  error='1'
+2026-09-10 10:26:35,120  INFO      TRC-FAAE     · brakuje: ['sscc', 'picking_date', 'gross_weight_kg', 'SPR_LABEL_PRINT_RES_IT']
+2026-09-10 10:26:35,120  INFO      TRC-FAAE     · ponawiam za 1.0 s...
+2026-09-10 10:26:36,120  INFO      
+------------------------------------------------------------------------------
+TRC-FAAE  [4] ==> WMS  POST /SprLabelPrint  (proba 3 z 3)
+------------------------------------------------------------------------------
+2026-09-10 10:26:36,121  INFO      TRC-FAAE     URL                  : http://192.168.1.34:8080/WilkRestServer/Wilk/SprLabelPrint
+2026-09-10 10:26:36,121  INFO      TRC-FAAE     timeout [s]          : 10
+2026-09-10 10:26:36,122  INFO      TRC-FAAE     JSON:
+{
+  "c_order_nr": "202609100826256A2A4E",
+  "sscc": "020012340000738705"
+}
+2026-09-10 10:26:36,124  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-09-10 10:26:36,410  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprLabelPrint HTTP/1.1" 200 30
+2026-09-10 10:26:36,410  INFO      
+------------------------------------------------------------------------------
+TRC-FAAE  [5] <== WMS  odpowiedz /SprLabelPrint
+------------------------------------------------------------------------------
+2026-09-10 10:26:36,411  INFO      TRC-FAAE     HTTP                 : 200
+2026-09-10 10:26:36,411  INFO      TRC-FAAE     czas [ms]            : 288.0
+2026-09-10 10:26:36,411  INFO      TRC-FAAE     dlugosc              : 30
+2026-09-10 10:26:36,411  DEBUG     TRC-FAAE     RAW BODY:
+{"status":"533_1","error":"1"}
+2026-09-10 10:26:36,411  INFO      TRC-FAAE     JSON (sparsowany):
+{
+  "status": "533_1",
+  "error": "1"
+}
+2026-09-10 10:26:36,411  INFO      TRC-FAAE     · klucze: ['status', 'error']
+2026-09-10 10:26:36,411  INFO      TRC-FAAE     · odpowiedz NIEPOPRAWNA: status='533_1'  error='1'
+2026-09-10 10:26:36,411  INFO      TRC-FAAE     · brakuje: ['sscc', 'picking_date', 'gross_weight_kg', 'SPR_LABEL_PRINT_RES_IT']
+2026-09-10 10:26:36,412  WARNING   
+------------------------------------------------------------------------------
+TRC-FAAE  [5] !!! PRZERWANO: nie udalo sie pobrac danych etykiety
+------------------------------------------------------------------------------
+2026-09-10 10:26:36,412  WARNING   TRC-FAAE     szczegoly: status=533_1 error=1
+2026-09-10 10:26:36,412  INFO      
+------------------------------------------------------------------------------
+TRC-FAAE  [6] ==> PLC  TCP :4301  blad pobierania etykiety
+------------------------------------------------------------------------------
+2026-09-10 10:26:36,413  INFO      TRC-FAAE     bajtow               : 83
+2026-09-10 10:26:36,413  INFO      TRC-FAAE     JSON:
+{
+  "status": "ERR",
+  "error": "WMS_LABEL_REJECTED",
+  "message": "status=533_1 error=1"
+}
+2026-09-10 10:26:36,413  INFO      🔚 TRC-FAAE Rozlaczono OUTPUT: ('192.168.20.3', 55123)
+2026-09-10 10:26:38,425  INFO      
+🔗 TRC-E50A Klient OUTPUT polaczony: ('192.168.20.3', 57390)
+2026-09-10 10:26:57,305  INFO      TRC-63AE     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:26:57,305  INFO      
+------------------------------------------------------------------------------
+TRC-63AE  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:26:57,306  INFO      TRC-63AE     zrodlo               : 192.168.20.3:61166
+2026-09-10 10:26:57,306  INFO      TRC-63AE     znakow               : 0
+2026-09-10 10:26:57,306  INFO      TRC-63AE     czas [ms]            : 30008.2
+2026-09-10 10:26:57,307  DEBUG     TRC-63AE     RAW BODY:
+''
+2026-09-10 10:26:57,307  ERROR     ❌ TRC-63AE Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:26:57,307  ERROR     TRC-63AE     odebrano: ''
+2026-09-10 10:26:57,307  INFO      🔚 TRC-63AE Zamknieto INPUT: ('192.168.20.3', 61166)
+2026-09-10 10:26:59,310  INFO      🔗 TRC-69B4 Klient INPUT polaczony: ('192.168.20.3', 62841)
+2026-09-10 10:27:29,325  INFO      TRC-69B4     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:27:29,326  INFO      
+------------------------------------------------------------------------------
+TRC-69B4  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:27:29,326  INFO      TRC-69B4     zrodlo               : 192.168.20.3:62841
+2026-09-10 10:27:29,326  INFO      TRC-69B4     znakow               : 0
+2026-09-10 10:27:29,326  INFO      TRC-69B4     czas [ms]            : 30015.0
+2026-09-10 10:27:29,326  DEBUG     TRC-69B4     RAW BODY:
+''
+2026-09-10 10:27:29,328  ERROR     ❌ TRC-69B4 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:27:29,330  ERROR     TRC-69B4     odebrano: ''
+2026-09-10 10:27:29,332  INFO      🔚 TRC-69B4 Zamknieto INPUT: ('192.168.20.3', 62841)
+2026-09-10 10:27:31,335  INFO      🔗 TRC-7A1C Klient INPUT polaczony: ('192.168.20.3', 62727)
+2026-09-10 10:28:01,342  INFO      TRC-7A1C     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:28:01,342  INFO      
+------------------------------------------------------------------------------
+TRC-7A1C  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:28:01,343  INFO      TRC-7A1C     zrodlo               : 192.168.20.3:62727
+2026-09-10 10:28:01,343  INFO      TRC-7A1C     znakow               : 0
+2026-09-10 10:28:01,344  INFO      TRC-7A1C     czas [ms]            : 30007.1
+2026-09-10 10:28:01,344  DEBUG     TRC-7A1C     RAW BODY:
+''
+2026-09-10 10:28:01,344  ERROR     ❌ TRC-7A1C Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:28:01,345  ERROR     TRC-7A1C     odebrano: ''
+2026-09-10 10:28:01,345  INFO      🔚 TRC-7A1C Zamknieto INPUT: ('192.168.20.3', 62727)
+2026-09-10 10:28:03,348  INFO      🔗 TRC-32D3 Klient INPUT polaczony: ('192.168.20.3', 50316)
+2026-09-10 10:28:33,355  INFO      TRC-32D3     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:28:33,355  INFO      
+------------------------------------------------------------------------------
+TRC-32D3  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:28:33,355  INFO      TRC-32D3     zrodlo               : 192.168.20.3:50316
+2026-09-10 10:28:33,355  INFO      TRC-32D3     znakow               : 0
+2026-09-10 10:28:33,355  INFO      TRC-32D3     czas [ms]            : 30006.3
+2026-09-10 10:28:33,356  DEBUG     TRC-32D3     RAW BODY:
+''
+2026-09-10 10:28:33,356  ERROR     ❌ TRC-32D3 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:28:33,356  ERROR     TRC-32D3     odebrano: ''
+2026-09-10 10:28:33,356  INFO      🔚 TRC-32D3 Zamknieto INPUT: ('192.168.20.3', 50316)
+2026-09-10 10:28:35,359  INFO      🔗 TRC-2CCF Klient INPUT polaczony: ('192.168.20.3', 61285)
+2026-09-10 10:29:05,375  INFO      TRC-2CCF     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:29:05,375  INFO      
+------------------------------------------------------------------------------
+TRC-2CCF  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:29:05,376  INFO      TRC-2CCF     zrodlo               : 192.168.20.3:61285
+2026-09-10 10:29:05,376  INFO      TRC-2CCF     znakow               : 0
+2026-09-10 10:29:05,376  INFO      TRC-2CCF     czas [ms]            : 30015.4
+2026-09-10 10:29:05,376  DEBUG     TRC-2CCF     RAW BODY:
+''
+2026-09-10 10:29:05,376  ERROR     ❌ TRC-2CCF Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:29:05,377  ERROR     TRC-2CCF     odebrano: ''
+2026-09-10 10:29:05,377  INFO      🔚 TRC-2CCF Zamknieto INPUT: ('192.168.20.3', 61285)
+2026-09-10 10:29:07,382  INFO      🔗 TRC-CAC8 Klient INPUT polaczony: ('192.168.20.3', 63136)
+2026-09-10 10:29:37,385  INFO      TRC-CAC8     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:29:37,386  INFO      
+------------------------------------------------------------------------------
+TRC-CAC8  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:29:37,386  INFO      TRC-CAC8     zrodlo               : 192.168.20.3:63136
+2026-09-10 10:29:37,386  INFO      TRC-CAC8     znakow               : 0
+2026-09-10 10:29:37,386  INFO      TRC-CAC8     czas [ms]            : 30003.1
+2026-09-10 10:29:37,386  DEBUG     TRC-CAC8     RAW BODY:
+''
+2026-09-10 10:29:37,386  ERROR     ❌ TRC-CAC8 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:29:37,387  ERROR     TRC-CAC8     odebrano: ''
+2026-09-10 10:29:37,387  INFO      🔚 TRC-CAC8 Zamknieto INPUT: ('192.168.20.3', 63136)
+2026-09-10 10:29:39,392  INFO      🔗 TRC-FC02 Klient INPUT polaczony: ('192.168.20.3', 53199)
+2026-09-10 10:30:09,401  INFO      TRC-FC02     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:30:09,402  INFO      
+------------------------------------------------------------------------------
+TRC-FC02  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:30:09,403  INFO      TRC-FC02     zrodlo               : 192.168.20.3:53199
+2026-09-10 10:30:09,404  INFO      TRC-FC02     znakow               : 0
+2026-09-10 10:30:09,404  INFO      TRC-FC02     czas [ms]            : 30009.3
+2026-09-10 10:30:09,404  DEBUG     TRC-FC02     RAW BODY:
+''
+2026-09-10 10:30:09,405  ERROR     ❌ TRC-FC02 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:30:09,405  ERROR     TRC-FC02     odebrano: ''
+2026-09-10 10:30:09,405  INFO      🔚 TRC-FC02 Zamknieto INPUT: ('192.168.20.3', 53199)
+2026-09-10 10:30:11,411  INFO      🔗 TRC-C7D6 Klient INPUT polaczony: ('192.168.20.3', 61169)
+2026-09-10 10:30:41,423  INFO      TRC-C7D6     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:30:41,424  INFO      
+------------------------------------------------------------------------------
+TRC-C7D6  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:30:41,425  INFO      TRC-C7D6     zrodlo               : 192.168.20.3:61169
+2026-09-10 10:30:41,425  INFO      TRC-C7D6     znakow               : 0
+2026-09-10 10:30:41,426  INFO      TRC-C7D6     czas [ms]            : 30012.1
+2026-09-10 10:30:41,426  DEBUG     TRC-C7D6     RAW BODY:
+''
+2026-09-10 10:30:41,426  ERROR     ❌ TRC-C7D6 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:30:41,427  ERROR     TRC-C7D6     odebrano: ''
+2026-09-10 10:30:41,427  INFO      🔚 TRC-C7D6 Zamknieto INPUT: ('192.168.20.3', 61169)
+2026-09-10 10:30:43,431  INFO      🔗 TRC-0EA6 Klient INPUT polaczony: ('192.168.20.3', 53678)
+2026-09-10 10:31:13,445  INFO      TRC-0EA6     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:31:13,446  INFO      
+------------------------------------------------------------------------------
+TRC-0EA6  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:31:13,447  INFO      TRC-0EA6     zrodlo               : 192.168.20.3:53678
+2026-09-10 10:31:13,447  INFO      TRC-0EA6     znakow               : 0
+2026-09-10 10:31:13,449  INFO      TRC-0EA6     czas [ms]            : 30014.7
+2026-09-10 10:31:13,451  DEBUG     TRC-0EA6     RAW BODY:
+''
+2026-09-10 10:31:13,453  ERROR     ❌ TRC-0EA6 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:31:13,455  ERROR     TRC-0EA6     odebrano: ''
+2026-09-10 10:31:13,455  INFO      🔚 TRC-0EA6 Zamknieto INPUT: ('192.168.20.3', 53678)
+2026-09-10 10:31:15,457  INFO      🔗 TRC-D7A6 Klient INPUT polaczony: ('192.168.20.3', 57730)
+2026-09-10 10:31:45,471  INFO      TRC-D7A6     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:31:45,471  INFO      
+------------------------------------------------------------------------------
+TRC-D7A6  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:31:45,472  INFO      TRC-D7A6     zrodlo               : 192.168.20.3:57730
+2026-09-10 10:31:45,472  INFO      TRC-D7A6     znakow               : 0
+2026-09-10 10:31:45,472  INFO      TRC-D7A6     czas [ms]            : 30014.1
+2026-09-10 10:31:45,472  DEBUG     TRC-D7A6     RAW BODY:
+''
+2026-09-10 10:31:45,472  ERROR     ❌ TRC-D7A6 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:31:45,472  ERROR     TRC-D7A6     odebrano: ''
+2026-09-10 10:31:45,472  INFO      🔚 TRC-D7A6 Zamknieto INPUT: ('192.168.20.3', 57730)
+2026-09-10 10:31:47,474  INFO      🔗 TRC-2EB1 Klient INPUT polaczony: ('192.168.20.3', 57604)
+2026-09-10 10:32:17,481  INFO      TRC-2EB1     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:32:17,482  INFO      
+------------------------------------------------------------------------------
+TRC-2EB1  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:32:17,482  INFO      TRC-2EB1     zrodlo               : 192.168.20.3:57604
+2026-09-10 10:32:17,484  INFO      TRC-2EB1     znakow               : 0
+2026-09-10 10:32:17,486  INFO      TRC-2EB1     czas [ms]            : 30007.4
+2026-09-10 10:32:17,486  DEBUG     TRC-2EB1     RAW BODY:
+''
+2026-09-10 10:32:17,487  ERROR     ❌ TRC-2EB1 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:32:17,487  ERROR     TRC-2EB1     odebrano: ''
+2026-09-10 10:32:17,488  INFO      🔚 TRC-2EB1 Zamknieto INPUT: ('192.168.20.3', 57604)
+2026-09-10 10:32:19,490  INFO      🔗 TRC-25BF Klient INPUT polaczony: ('192.168.20.3', 56701)
+2026-09-10 10:32:49,502  INFO      TRC-25BF     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:32:49,502  INFO      
+------------------------------------------------------------------------------
+TRC-25BF  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:32:49,502  INFO      TRC-25BF     zrodlo               : 192.168.20.3:56701
+2026-09-10 10:32:49,502  INFO      TRC-25BF     znakow               : 0
+2026-09-10 10:32:49,502  INFO      TRC-25BF     czas [ms]            : 30011.3
+2026-09-10 10:32:49,502  DEBUG     TRC-25BF     RAW BODY:
+''
+2026-09-10 10:32:49,502  ERROR     ❌ TRC-25BF Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:32:49,503  ERROR     TRC-25BF     odebrano: ''
+2026-09-10 10:32:49,503  INFO      🔚 TRC-25BF Zamknieto INPUT: ('192.168.20.3', 56701)
+2026-09-10 10:32:51,504  INFO      🔗 TRC-65BB Klient INPUT polaczony: ('192.168.20.3', 63478)
+2026-09-10 10:33:21,506  INFO      TRC-65BB     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:33:21,507  INFO      
+------------------------------------------------------------------------------
+TRC-65BB  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:33:21,508  INFO      TRC-65BB     zrodlo               : 192.168.20.3:63478
+2026-09-10 10:33:21,510  INFO      TRC-65BB     znakow               : 0
+2026-09-10 10:33:21,510  INFO      TRC-65BB     czas [ms]            : 30002.3
+2026-09-10 10:33:21,512  DEBUG     TRC-65BB     RAW BODY:
+''
+2026-09-10 10:33:21,512  ERROR     ❌ TRC-65BB Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:33:21,512  ERROR     TRC-65BB     odebrano: ''
+2026-09-10 10:33:21,513  INFO      🔚 TRC-65BB Zamknieto INPUT: ('192.168.20.3', 63478)
+2026-09-10 10:33:23,515  INFO      🔗 TRC-4367 Klient INPUT polaczony: ('192.168.20.3', 63035)
+2026-09-10 10:33:53,525  INFO      TRC-4367     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:33:53,525  INFO      
+------------------------------------------------------------------------------
+TRC-4367  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:33:53,525  INFO      TRC-4367     zrodlo               : 192.168.20.3:63035
+2026-09-10 10:33:53,525  INFO      TRC-4367     znakow               : 0
+2026-09-10 10:33:53,525  INFO      TRC-4367     czas [ms]            : 30009.8
+2026-09-10 10:33:53,525  DEBUG     TRC-4367     RAW BODY:
+''
+2026-09-10 10:33:53,525  ERROR     ❌ TRC-4367 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:33:53,525  ERROR     TRC-4367     odebrano: ''
+2026-09-10 10:33:53,526  INFO      🔚 TRC-4367 Zamknieto INPUT: ('192.168.20.3', 63035)
+2026-09-10 10:33:55,528  INFO      🔗 TRC-8A39 Klient INPUT polaczony: ('192.168.20.3', 56789)
+2026-09-10 10:34:25,541  INFO      TRC-8A39     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:34:25,541  INFO      
+------------------------------------------------------------------------------
+TRC-8A39  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:34:25,541  INFO      TRC-8A39     zrodlo               : 192.168.20.3:56789
+2026-09-10 10:34:25,541  INFO      TRC-8A39     znakow               : 0
+2026-09-10 10:34:25,541  INFO      TRC-8A39     czas [ms]            : 30012.8
+2026-09-10 10:34:25,542  DEBUG     TRC-8A39     RAW BODY:
+''
+2026-09-10 10:34:25,542  ERROR     ❌ TRC-8A39 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:34:25,542  ERROR     TRC-8A39     odebrano: ''
+2026-09-10 10:34:25,542  INFO      🔚 TRC-8A39 Zamknieto INPUT: ('192.168.20.3', 56789)
+2026-09-10 10:34:27,544  INFO      🔗 TRC-101F Klient INPUT polaczony: ('192.168.20.3', 49246)
+2026-09-10 10:34:57,551  INFO      TRC-101F     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:34:57,551  INFO      
+------------------------------------------------------------------------------
+TRC-101F  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:34:57,551  INFO      TRC-101F     zrodlo               : 192.168.20.3:49246
+2026-09-10 10:34:57,551  INFO      TRC-101F     znakow               : 0
+2026-09-10 10:34:57,552  INFO      TRC-101F     czas [ms]            : 30007.1
+2026-09-10 10:34:57,552  DEBUG     TRC-101F     RAW BODY:
+''
+2026-09-10 10:34:57,552  ERROR     ❌ TRC-101F Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:34:57,552  ERROR     TRC-101F     odebrano: ''
+2026-09-10 10:34:57,552  INFO      🔚 TRC-101F Zamknieto INPUT: ('192.168.20.3', 49246)
+2026-09-10 10:34:59,554  INFO      🔗 TRC-73A8 Klient INPUT polaczony: ('192.168.20.3', 57505)
+2026-09-10 10:35:29,557  INFO      TRC-73A8     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:35:29,558  INFO      
+------------------------------------------------------------------------------
+TRC-73A8  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:35:29,558  INFO      TRC-73A8     zrodlo               : 192.168.20.3:57505
+2026-09-10 10:35:29,558  INFO      TRC-73A8     znakow               : 0
+2026-09-10 10:35:29,558  INFO      TRC-73A8     czas [ms]            : 30003.8
+2026-09-10 10:35:29,558  DEBUG     TRC-73A8     RAW BODY:
+''
+2026-09-10 10:35:29,558  ERROR     ❌ TRC-73A8 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:35:29,558  ERROR     TRC-73A8     odebrano: ''
+2026-09-10 10:35:29,558  INFO      🔚 TRC-73A8 Zamknieto INPUT: ('192.168.20.3', 57505)
+2026-09-10 10:35:31,561  INFO      🔗 TRC-B64D Klient INPUT polaczony: ('192.168.20.3', 56772)
+2026-09-10 10:36:01,567  INFO      TRC-B64D     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:36:01,568  INFO      
+------------------------------------------------------------------------------
+TRC-B64D  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:36:01,568  INFO      TRC-B64D     zrodlo               : 192.168.20.3:56772
+2026-09-10 10:36:01,568  INFO      TRC-B64D     znakow               : 0
+2026-09-10 10:36:01,568  INFO      TRC-B64D     czas [ms]            : 30006.9
+2026-09-10 10:36:01,568  DEBUG     TRC-B64D     RAW BODY:
+''
+2026-09-10 10:36:01,569  ERROR     ❌ TRC-B64D Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:36:01,569  ERROR     TRC-B64D     odebrano: ''
+2026-09-10 10:36:01,569  INFO      🔚 TRC-B64D Zamknieto INPUT: ('192.168.20.3', 56772)
+2026-09-10 10:36:03,573  INFO      🔗 TRC-0D47 Klient INPUT polaczony: ('192.168.20.3', 52608)
+2026-09-10 10:36:33,580  INFO      TRC-0D47     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:36:33,580  INFO      
+------------------------------------------------------------------------------
+TRC-0D47  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:36:33,581  INFO      TRC-0D47     zrodlo               : 192.168.20.3:52608
+2026-09-10 10:36:33,581  INFO      TRC-0D47     znakow               : 0
+2026-09-10 10:36:33,582  INFO      TRC-0D47     czas [ms]            : 30007.1
+2026-09-10 10:36:33,582  DEBUG     TRC-0D47     RAW BODY:
+''
+2026-09-10 10:36:33,582  ERROR     ❌ TRC-0D47 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:36:33,582  ERROR     TRC-0D47     odebrano: ''
+2026-09-10 10:36:33,582  INFO      🔚 TRC-0D47 Zamknieto INPUT: ('192.168.20.3', 52608)
+2026-09-10 10:36:35,585  INFO      🔗 TRC-8104 Klient INPUT polaczony: ('192.168.20.3', 55790)
+2026-09-10 10:37:05,590  INFO      TRC-8104     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:37:05,590  INFO      
+------------------------------------------------------------------------------
+TRC-8104  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:37:05,590  INFO      TRC-8104     zrodlo               : 192.168.20.3:55790
+2026-09-10 10:37:05,590  INFO      TRC-8104     znakow               : 0
+2026-09-10 10:37:05,590  INFO      TRC-8104     czas [ms]            : 30004.8
+2026-09-10 10:37:05,590  DEBUG     TRC-8104     RAW BODY:
+''
+2026-09-10 10:37:05,590  ERROR     ❌ TRC-8104 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:37:05,590  ERROR     TRC-8104     odebrano: ''
+2026-09-10 10:37:05,591  INFO      🔚 TRC-8104 Zamknieto INPUT: ('192.168.20.3', 55790)
+2026-09-10 10:37:07,593  INFO      🔗 TRC-B727 Klient INPUT polaczony: ('192.168.20.3', 51769)
+2026-09-10 10:37:37,607  INFO      TRC-B727     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:37:37,608  INFO      
+------------------------------------------------------------------------------
+TRC-B727  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:37:37,608  INFO      TRC-B727     zrodlo               : 192.168.20.3:51769
+2026-09-10 10:37:37,608  INFO      TRC-B727     znakow               : 0
+2026-09-10 10:37:37,608  INFO      TRC-B727     czas [ms]            : 30014.3
+2026-09-10 10:37:37,608  DEBUG     TRC-B727     RAW BODY:
+''
+2026-09-10 10:37:37,608  ERROR     ❌ TRC-B727 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:37:37,608  ERROR     TRC-B727     odebrano: ''
+2026-09-10 10:37:37,608  INFO      🔚 TRC-B727 Zamknieto INPUT: ('192.168.20.3', 51769)
+2026-09-10 10:37:39,610  INFO      🔗 TRC-1038 Klient INPUT polaczony: ('192.168.20.3', 61694)
+2026-09-10 10:38:09,624  INFO      TRC-1038     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:38:09,624  INFO      
+------------------------------------------------------------------------------
+TRC-1038  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:38:09,624  INFO      TRC-1038     zrodlo               : 192.168.20.3:61694
+2026-09-10 10:38:09,624  INFO      TRC-1038     znakow               : 0
+2026-09-10 10:38:09,624  INFO      TRC-1038     czas [ms]            : 30013.1
+2026-09-10 10:38:09,625  DEBUG     TRC-1038     RAW BODY:
+''
+2026-09-10 10:38:09,625  ERROR     ❌ TRC-1038 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:38:09,625  ERROR     TRC-1038     odebrano: ''
+2026-09-10 10:38:09,625  INFO      🔚 TRC-1038 Zamknieto INPUT: ('192.168.20.3', 61694)
+2026-09-10 10:38:11,627  INFO      🔗 TRC-AB78 Klient INPUT polaczony: ('192.168.20.3', 49802)
+2026-09-10 10:38:41,635  INFO      TRC-AB78     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:38:41,635  INFO      
+------------------------------------------------------------------------------
+TRC-AB78  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:38:41,635  INFO      TRC-AB78     zrodlo               : 192.168.20.3:49802
+2026-09-10 10:38:41,635  INFO      TRC-AB78     znakow               : 0
+2026-09-10 10:38:41,635  INFO      TRC-AB78     czas [ms]            : 30008.1
+2026-09-10 10:38:41,635  DEBUG     TRC-AB78     RAW BODY:
+''
+2026-09-10 10:38:41,635  ERROR     ❌ TRC-AB78 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:38:41,635  ERROR     TRC-AB78     odebrano: ''
+2026-09-10 10:38:41,635  INFO      🔚 TRC-AB78 Zamknieto INPUT: ('192.168.20.3', 49802)
+2026-09-10 10:38:43,637  INFO      🔗 TRC-7BF8 Klient INPUT polaczony: ('192.168.20.3', 61818)
+2026-09-10 10:39:13,638  INFO      TRC-7BF8     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:39:13,639  INFO      
+------------------------------------------------------------------------------
+TRC-7BF8  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:39:13,640  INFO      TRC-7BF8     zrodlo               : 192.168.20.3:61818
+2026-09-10 10:39:13,640  INFO      TRC-7BF8     znakow               : 0
+2026-09-10 10:39:13,644  INFO      TRC-7BF8     czas [ms]            : 30001.8
+2026-09-10 10:39:13,645  DEBUG     TRC-7BF8     RAW BODY:
+''
+2026-09-10 10:39:13,645  ERROR     ❌ TRC-7BF8 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:39:13,647  ERROR     TRC-7BF8     odebrano: ''
+2026-09-10 10:39:13,647  INFO      🔚 TRC-7BF8 Zamknieto INPUT: ('192.168.20.3', 61818)
+2026-09-10 10:39:15,651  INFO      🔗 TRC-BE09 Klient INPUT polaczony: ('192.168.20.3', 59970)
+2026-09-10 10:41:25,626  INFO      ============================================================
+2026-09-10 10:41:25,626  INFO        WMS Bridge v5
+2026-09-10 10:41:25,626  INFO        TCP IN   : 4300  (PLC wysyla dane)
+2026-09-10 10:41:25,626  INFO        TCP OUT  : 4301  (PLC odbiera odpowiedz)
+2026-09-10 10:41:25,626  INFO        WMS SPR  : http://192.168.1.34:8080/WilkRestServer/Wilk/Spr
+2026-09-10 10:41:25,627  INFO        WMS LABEL: http://192.168.1.34:8080/WilkRestServer/Wilk/SprLabelPrint
+2026-09-10 10:41:25,627  INFO        FIRM_NR  : MAGH
+2026-09-10 10:41:25,627  INFO      ------------------------------------------------------------
+2026-09-10 10:41:25,627  INFO        MAPOWANIE: PLC PROD_SERIAL_NR -> WMS PRODUCT_NR     (produkt)
+2026-09-10 10:41:25,627  INFO                   PLC PRODUCT_NR     -> WMS PROD_SERIAL_NR (partia)
+2026-09-10 10:41:25,627  INFO      ------------------------------------------------------------
+2026-09-10 10:41:25,627  INFO        TRYB AWARYJNY ETYKIETY: WLACZONY
+2026-09-10 10:41:25,627  INFO        Waga gdy WMS nie zwroci danych: bu_quantity
+2026-09-10 10:41:25,627  INFO      ------------------------------------------------------------
+2026-09-10 10:41:25,628  INFO        TRASA: [1] PLC->BRIDGE  [2] BRIDGE->WMS /Spr
+2026-09-10 10:41:25,628  INFO               [3] WMS->BRIDGE  [4] BRIDGE->WMS /SprLabelPrint
+2026-09-10 10:41:25,628  INFO               [5] WMS->BRIDGE  [6] BRIDGE->PLC
+2026-09-10 10:41:25,628  INFO      ============================================================
+2026-09-10 10:41:25,628  INFO      🚀 Serwery uruchomione
+2026-09-10 10:41:25,629  INFO      📤 Serwer OUTPUT dziala na porcie 4301
+2026-09-10 10:41:25,629  INFO      📥 Serwer INPUT dziala na porcie 4300
+2026-09-10 10:41:31,280  INFO      
+🔗 TRC-91C5 Klient OUTPUT polaczony: ('192.168.20.3', 50339)
+2026-09-10 10:41:31,280  INFO      🔗 TRC-9FF6 Klient INPUT polaczony: ('192.168.20.3', 60055)
+2026-09-10 10:42:01,286  INFO      TRC-9FF6     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:42:01,287  INFO      
+------------------------------------------------------------------------------
+TRC-9FF6  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:42:01,287  INFO      TRC-9FF6     zrodlo               : 192.168.20.3:60055
+2026-09-10 10:42:01,288  INFO      TRC-9FF6     znakow               : 0
+2026-09-10 10:42:01,288  INFO      TRC-9FF6     czas [ms]            : 30006.5
+2026-09-10 10:42:01,288  DEBUG     TRC-9FF6     RAW BODY:
+''
+2026-09-10 10:42:01,288  ERROR     ❌ TRC-9FF6 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:42:01,288  ERROR     TRC-9FF6     odebrano: ''
+2026-09-10 10:42:01,288  INFO      🔚 TRC-9FF6 Zamknieto INPUT: ('192.168.20.3', 60055)
+2026-09-10 10:42:03,290  INFO      🔗 TRC-338D Klient INPUT polaczony: ('192.168.20.3', 50076)
+2026-09-10 10:42:33,304  INFO      TRC-338D     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:42:33,304  INFO      
+------------------------------------------------------------------------------
+TRC-338D  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:42:33,305  INFO      TRC-338D     zrodlo               : 192.168.20.3:50076
+2026-09-10 10:42:33,305  INFO      TRC-338D     znakow               : 0
+2026-09-10 10:42:33,306  INFO      TRC-338D     czas [ms]            : 30013.9
+2026-09-10 10:42:33,306  DEBUG     TRC-338D     RAW BODY:
+''
+2026-09-10 10:42:33,307  ERROR     ❌ TRC-338D Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:42:33,307  ERROR     TRC-338D     odebrano: ''
+2026-09-10 10:42:33,308  INFO      🔚 TRC-338D Zamknieto INPUT: ('192.168.20.3', 50076)
+2026-09-10 10:42:35,314  INFO      🔗 TRC-01F4 Klient INPUT polaczony: ('192.168.20.3', 59433)
+2026-09-10 10:43:05,320  INFO      TRC-01F4     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:43:05,321  INFO      
+------------------------------------------------------------------------------
+TRC-01F4  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:43:05,322  INFO      TRC-01F4     zrodlo               : 192.168.20.3:59433
+2026-09-10 10:43:05,323  INFO      TRC-01F4     znakow               : 0
+2026-09-10 10:43:05,324  INFO      TRC-01F4     czas [ms]            : 30005.7
+2026-09-10 10:43:05,324  DEBUG     TRC-01F4     RAW BODY:
+''
+2026-09-10 10:43:05,324  ERROR     ❌ TRC-01F4 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:43:05,324  ERROR     TRC-01F4     odebrano: ''
+2026-09-10 10:43:05,325  INFO      🔚 TRC-01F4 Zamknieto INPUT: ('192.168.20.3', 59433)
+2026-09-10 10:43:07,328  INFO      🔗 TRC-57F1 Klient INPUT polaczony: ('192.168.20.3', 56291)
+2026-09-10 10:43:37,337  INFO      TRC-57F1     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:43:37,337  INFO      
+------------------------------------------------------------------------------
+TRC-57F1  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:43:37,337  INFO      TRC-57F1     zrodlo               : 192.168.20.3:56291
+2026-09-10 10:43:37,337  INFO      TRC-57F1     znakow               : 0
+2026-09-10 10:43:37,337  INFO      TRC-57F1     czas [ms]            : 30008.1
+2026-09-10 10:43:37,337  DEBUG     TRC-57F1     RAW BODY:
+''
+2026-09-10 10:43:37,338  ERROR     ❌ TRC-57F1 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:43:37,338  ERROR     TRC-57F1     odebrano: ''
+2026-09-10 10:43:37,338  INFO      🔚 TRC-57F1 Zamknieto INPUT: ('192.168.20.3', 56291)
+2026-09-10 10:43:39,341  INFO      🔗 TRC-C208 Klient INPUT polaczony: ('192.168.20.3', 63083)
+2026-09-10 10:44:09,351  INFO      TRC-C208     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:44:09,352  INFO      
+------------------------------------------------------------------------------
+TRC-C208  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:44:09,352  INFO      TRC-C208     zrodlo               : 192.168.20.3:63083
+2026-09-10 10:44:09,352  INFO      TRC-C208     znakow               : 0
+2026-09-10 10:44:09,352  INFO      TRC-C208     czas [ms]            : 30010.4
+2026-09-10 10:44:09,352  DEBUG     TRC-C208     RAW BODY:
+''
+2026-09-10 10:44:09,352  ERROR     ❌ TRC-C208 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:44:09,353  ERROR     TRC-C208     odebrano: ''
+2026-09-10 10:44:09,353  INFO      🔚 TRC-C208 Zamknieto INPUT: ('192.168.20.3', 63083)
+2026-09-10 10:44:11,356  INFO      🔗 TRC-7831 Klient INPUT polaczony: ('192.168.20.3', 62244)
+2026-09-10 10:44:41,369  INFO      TRC-7831     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:44:41,370  INFO      
+------------------------------------------------------------------------------
+TRC-7831  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:44:41,371  INFO      TRC-7831     zrodlo               : 192.168.20.3:62244
+2026-09-10 10:44:41,371  INFO      TRC-7831     znakow               : 0
+2026-09-10 10:44:41,372  INFO      TRC-7831     czas [ms]            : 30013.7
+2026-09-10 10:44:41,372  DEBUG     TRC-7831     RAW BODY:
+''
+2026-09-10 10:44:41,373  ERROR     ❌ TRC-7831 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:44:41,373  ERROR     TRC-7831     odebrano: ''
+2026-09-10 10:44:41,374  INFO      🔚 TRC-7831 Zamknieto INPUT: ('192.168.20.3', 62244)
+2026-09-10 10:44:43,377  INFO      🔗 TRC-EEBB Klient INPUT polaczony: ('192.168.20.3', 51695)
+2026-09-10 10:45:13,387  INFO      TRC-EEBB     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:45:13,388  INFO      
+------------------------------------------------------------------------------
+TRC-EEBB  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:45:13,388  INFO      TRC-EEBB     zrodlo               : 192.168.20.3:51695
+2026-09-10 10:45:13,389  INFO      TRC-EEBB     znakow               : 0
+2026-09-10 10:45:13,389  INFO      TRC-EEBB     czas [ms]            : 30008.9
+2026-09-10 10:45:13,389  DEBUG     TRC-EEBB     RAW BODY:
+''
+2026-09-10 10:45:13,389  ERROR     ❌ TRC-EEBB Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:45:13,390  ERROR     TRC-EEBB     odebrano: ''
+2026-09-10 10:45:13,390  INFO      🔚 TRC-EEBB Zamknieto INPUT: ('192.168.20.3', 51695)
+2026-09-10 10:45:15,393  INFO      🔗 TRC-A01C Klient INPUT polaczony: ('192.168.20.3', 61796)
+2026-09-10 10:45:45,398  INFO      TRC-A01C     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:45:45,399  INFO      
+------------------------------------------------------------------------------
+TRC-A01C  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:45:45,400  INFO      TRC-A01C     zrodlo               : 192.168.20.3:61796
+2026-09-10 10:45:45,400  INFO      TRC-A01C     znakow               : 0
+2026-09-10 10:45:45,400  INFO      TRC-A01C     czas [ms]            : 30006.2
+2026-09-10 10:45:45,400  DEBUG     TRC-A01C     RAW BODY:
+''
+2026-09-10 10:45:45,401  ERROR     ❌ TRC-A01C Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:45:45,401  ERROR     TRC-A01C     odebrano: ''
+2026-09-10 10:45:45,401  INFO      🔚 TRC-A01C Zamknieto INPUT: ('192.168.20.3', 61796)
+2026-09-10 10:45:47,404  INFO      🔗 TRC-4D49 Klient INPUT polaczony: ('192.168.20.3', 59833)
+2026-09-10 10:46:17,418  INFO      TRC-4D49     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:46:17,418  INFO      
+------------------------------------------------------------------------------
+TRC-4D49  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:46:17,419  INFO      TRC-4D49     zrodlo               : 192.168.20.3:59833
+2026-09-10 10:46:17,419  INFO      TRC-4D49     znakow               : 0
+2026-09-10 10:46:17,419  INFO      TRC-4D49     czas [ms]            : 30014.3
+2026-09-10 10:46:17,419  DEBUG     TRC-4D49     RAW BODY:
+''
+2026-09-10 10:46:17,420  ERROR     ❌ TRC-4D49 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:46:17,420  ERROR     TRC-4D49     odebrano: ''
+2026-09-10 10:46:17,420  INFO      🔚 TRC-4D49 Zamknieto INPUT: ('192.168.20.3', 59833)
+2026-09-10 10:46:19,423  INFO      🔗 TRC-D6A8 Klient INPUT polaczony: ('192.168.20.3', 52968)
+2026-09-10 10:46:49,432  INFO      TRC-D6A8     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:46:49,433  INFO      
+------------------------------------------------------------------------------
+TRC-D6A8  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:46:49,433  INFO      TRC-D6A8     zrodlo               : 192.168.20.3:52968
+2026-09-10 10:46:49,434  INFO      TRC-D6A8     znakow               : 0
+2026-09-10 10:46:49,434  INFO      TRC-D6A8     czas [ms]            : 30007.8
+2026-09-10 10:46:49,435  DEBUG     TRC-D6A8     RAW BODY:
+''
+2026-09-10 10:46:49,437  ERROR     ❌ TRC-D6A8 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:46:49,438  ERROR     TRC-D6A8     odebrano: ''
+2026-09-10 10:46:49,439  INFO      🔚 TRC-D6A8 Zamknieto INPUT: ('192.168.20.3', 52968)
+2026-09-10 10:46:51,444  INFO      🔗 TRC-9653 Klient INPUT polaczony: ('192.168.20.3', 62568)
+2026-09-10 10:47:21,452  INFO      TRC-9653     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:47:21,453  INFO      
+------------------------------------------------------------------------------
+TRC-9653  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:47:21,454  INFO      TRC-9653     zrodlo               : 192.168.20.3:62568
+2026-09-10 10:47:21,455  INFO      TRC-9653     znakow               : 0
+2026-09-10 10:47:21,455  INFO      TRC-9653     czas [ms]            : 30008.5
+2026-09-10 10:47:21,455  DEBUG     TRC-9653     RAW BODY:
+''
+2026-09-10 10:47:21,456  ERROR     ❌ TRC-9653 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:47:21,456  ERROR     TRC-9653     odebrano: ''
+2026-09-10 10:47:21,457  INFO      🔚 TRC-9653 Zamknieto INPUT: ('192.168.20.3', 62568)
+2026-09-10 10:47:23,461  INFO      🔗 TRC-61C1 Klient INPUT polaczony: ('192.168.20.3', 49493)
+2026-09-10 10:47:53,472  INFO      TRC-61C1     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:47:53,473  INFO      
+------------------------------------------------------------------------------
+TRC-61C1  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:47:53,473  INFO      TRC-61C1     zrodlo               : 192.168.20.3:49493
+2026-09-10 10:47:53,473  INFO      TRC-61C1     znakow               : 0
+2026-09-10 10:47:53,473  INFO      TRC-61C1     czas [ms]            : 30011.7
+2026-09-10 10:47:53,473  DEBUG     TRC-61C1     RAW BODY:
+''
+2026-09-10 10:47:53,474  ERROR     ❌ TRC-61C1 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:47:53,474  ERROR     TRC-61C1     odebrano: ''
+2026-09-10 10:47:53,474  INFO      🔚 TRC-61C1 Zamknieto INPUT: ('192.168.20.3', 49493)
+2026-09-10 10:47:55,477  INFO      🔗 TRC-044F Klient INPUT polaczony: ('192.168.20.3', 58526)
+2026-09-10 10:48:18,491  INFO      🔗 TRC-9225 Klient INPUT polaczony: ('127.0.0.1', 62374)
+2026-09-10 10:48:18,491  INFO      TRC-9225     · recv #1: +109 B  (razem 109 B)
+2026-09-10 10:48:18,491  INFO      
+------------------------------------------------------------------------------
+TRC-9225  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:48:18,491  INFO      TRC-9225     zrodlo               : 127.0.0.1:62374
+2026-09-10 10:48:18,491  INFO      TRC-9225     znakow               : 109
+2026-09-10 10:48:18,492  INFO      TRC-9225     czas [ms]            : 0.2
+2026-09-10 10:48:18,492  DEBUG     TRC-9225     RAW BODY:
+'[{"POSITION_NR": "0", "PRODUCT_NR": "03/04/09/2026", "PROD_SERIAL_NR": "0100000039", "BU_QUANTITY": "44800"}]'
+2026-09-10 10:48:18,492  INFO      
+------------------------------------------------------------------------------
+TRC-9225  [1] <== PLC  sparsowany JSON od PLC
+------------------------------------------------------------------------------
+2026-09-10 10:48:18,492  INFO      TRC-9225     pozycji              : 1
+2026-09-10 10:48:18,492  INFO      TRC-9225     JSON:
+[
+  {
+    "POSITION_NR": "0",
+    "PRODUCT_NR": "03/04/09/2026",
+    "PROD_SERIAL_NR": "0100000039",
+    "BU_QUANTITY": "44800"
+  }
+]
+2026-09-10 10:48:18,492  INFO      TRC-9225     · dane w kolejce (dlugosc: 1)
+2026-09-10 10:48:18,492  INFO      TRC-91C5     · pobrano z kolejki po 407.2 s  (zostalo: 0)
+2026-09-10 10:48:18,492  INFO      
+------------------------------------------------------------------------------
+TRC-91C5  [1] <== PLC  dane uzyte w tej transakcji
+------------------------------------------------------------------------------
+2026-09-10 10:48:18,492  INFO      🔚 TRC-9225 Zamknieto INPUT: ('127.0.0.1', 62374)
+2026-09-10 10:48:18,493  INFO      TRC-91C5     JSON:
+[
+  {
+    "POSITION_NR": "0",
+    "PRODUCT_NR": "03/04/09/2026",
+    "PROD_SERIAL_NR": "0100000039",
+    "BU_QUANTITY": "44800"
+  }
+]
+2026-09-10 10:48:18,493  INFO      TRC-91C5     · mapowanie: PLC PROD_SERIAL_NR='0100000039' -> WMS PRODUCT_NR='0100000039'
+2026-09-10 10:48:18,493  INFO      TRC-91C5     · mapowanie: PLC PRODUCT_NR='03/04/09/2026' -> WMS PROD_SERIAL_NR='03/04/09/2026'
+2026-09-10 10:48:18,493  INFO      
+------------------------------------------------------------------------------
+TRC-91C5  [2] ==> WMS  POST /Spr  (zamowienie SPR)
+------------------------------------------------------------------------------
+2026-09-10 10:48:18,493  INFO      TRC-91C5     URL                  : http://192.168.1.34:8080/WilkRestServer/Wilk/Spr
+2026-09-10 10:48:18,493  INFO      TRC-91C5     C_ORDER_NR           : 20260910084818018FF7
+2026-09-10 10:48:18,493  INFO      TRC-91C5     pozycji              : 1
+2026-09-10 10:48:18,493  INFO      TRC-91C5     JSON:
+{
+  "SPR_HEADER": [
+    {
+      "FIRM_NR": "MAGH",
+      "CUSTOMER_NR": "MAGH",
+      "C_ORDER_NR": "20260910084818018FF7",
+      "DATE_SHIPPING": "2026/09/10",
+      "WH_NR": "MAGH",
+      "SPR_ITEM": [
+        {
+          "POSITION_NR": "0",
+          "PRODUCT_NR": "0100000039",
+          "PROD_SERIAL_NR": "03/04/09/2026",
+          "BU_QUANTITY": "44800"
+        }
+      ]
+    }
+  ]
+}
+2026-09-10 10:48:18,495  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-09-10 10:48:18,991  INFO      
+🔗 TRC-B5DD Klient OUTPUT polaczony: ('127.0.0.1', 62378)
+2026-09-10 10:48:19,104  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/Spr HTTP/1.1" 200 174
+2026-09-10 10:48:19,105  INFO      
+------------------------------------------------------------------------------
+TRC-91C5  [3] <== WMS  odpowiedz /Spr
+------------------------------------------------------------------------------
+2026-09-10 10:48:19,105  INFO      TRC-91C5     HTTP                 : 200
+2026-09-10 10:48:19,105  INFO      TRC-91C5     czas [ms]            : 611.7
+2026-09-10 10:48:19,105  INFO      TRC-91C5     dlugosc              : 173
+2026-09-10 10:48:19,105  DEBUG     TRC-91C5     RAW BODY:
+{"c_order_nr":"20260910084818018FF7","status":"OK","error":"IMPORT_COMPLETED","message":"Import zakończony sukcesem","ts":"2026-09-10T10:49:05Z","sscc":"020012340000738712"}
+2026-09-10 10:48:19,106  INFO      TRC-91C5     JSON (sparsowany):
+{
+  "c_order_nr": "20260910084818018FF7",
+  "status": "OK",
+  "error": "IMPORT_COMPLETED",
+  "message": "Import zakończony sukcesem",
+  "ts": "2026-09-10T10:49:05Z",
+  "sscc": "020012340000738712"
+}
+2026-09-10 10:48:19,106  INFO      TRC-91C5     · ocena SPR: status='OK' error='IMPORT_COMPLETED' ==> PRZYJETE
+2026-09-10 10:48:19,106  INFO      TRC-91C5     · SSCC: ['020012340000738712']  (sztuk: 1)
+2026-09-10 10:48:19,106  INFO      
+------------------------------------------------------------------------------
+TRC-91C5  [4] ==> WMS  POST /SprLabelPrint  (proba 1 z 3)
+------------------------------------------------------------------------------
+2026-09-10 10:48:19,106  INFO      TRC-91C5     URL                  : http://192.168.1.34:8080/WilkRestServer/Wilk/SprLabelPrint
+2026-09-10 10:48:19,106  INFO      TRC-91C5     timeout [s]          : 10
+2026-09-10 10:48:19,106  INFO      TRC-91C5     JSON:
+{
+  "c_order_nr": "20260910084818018FF7",
+  "sscc": "020012340000738712"
+}
+2026-09-10 10:48:19,107  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-09-10 10:48:19,174  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprLabelPrint HTTP/1.1" 200 30
+2026-09-10 10:48:19,175  INFO      
+------------------------------------------------------------------------------
+TRC-91C5  [5] <== WMS  odpowiedz /SprLabelPrint
+------------------------------------------------------------------------------
+2026-09-10 10:48:19,175  INFO      TRC-91C5     HTTP                 : 200
+2026-09-10 10:48:19,175  INFO      TRC-91C5     czas [ms]            : 68.6
+2026-09-10 10:48:19,175  INFO      TRC-91C5     dlugosc              : 30
+2026-09-10 10:48:19,176  DEBUG     TRC-91C5     RAW BODY:
+{"status":"534_1","error":"1"}
+2026-09-10 10:48:19,176  INFO      TRC-91C5     JSON (sparsowany):
+{
+  "status": "534_1",
+  "error": "1"
+}
+2026-09-10 10:48:19,176  INFO      TRC-91C5     · klucze: ['status', 'error']
+2026-09-10 10:48:19,176  INFO      TRC-91C5     · odpowiedz NIEPOPRAWNA: status='534_1'  error='1'
+2026-09-10 10:48:19,176  INFO      TRC-91C5     · brakuje: ['sscc', 'picking_date', 'gross_weight_kg', 'SPR_LABEL_PRINT_RES_IT']
+2026-09-10 10:48:19,176  INFO      TRC-91C5     · ponawiam za 1.0 s...
+2026-09-10 10:48:20,177  INFO      
+------------------------------------------------------------------------------
+TRC-91C5  [4] ==> WMS  POST /SprLabelPrint  (proba 2 z 3)
+------------------------------------------------------------------------------
+2026-09-10 10:48:20,178  INFO      TRC-91C5     URL                  : http://192.168.1.34:8080/WilkRestServer/Wilk/SprLabelPrint
+2026-09-10 10:48:20,180  INFO      TRC-91C5     timeout [s]          : 10
+2026-09-10 10:48:20,182  INFO      TRC-91C5     JSON:
+{
+  "c_order_nr": "20260910084818018FF7",
+  "sscc": "020012340000738712"
+}
+2026-09-10 10:48:20,183  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-09-10 10:48:20,259  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprLabelPrint HTTP/1.1" 200 30
+2026-09-10 10:48:20,260  INFO      
+------------------------------------------------------------------------------
+TRC-91C5  [5] <== WMS  odpowiedz /SprLabelPrint
+------------------------------------------------------------------------------
+2026-09-10 10:48:20,260  INFO      TRC-91C5     HTTP                 : 200
+2026-09-10 10:48:20,260  INFO      TRC-91C5     czas [ms]            : 77.5
+2026-09-10 10:48:20,260  INFO      TRC-91C5     dlugosc              : 30
+2026-09-10 10:48:20,260  DEBUG     TRC-91C5     RAW BODY:
+{"status":"534_1","error":"1"}
+2026-09-10 10:48:20,260  INFO      TRC-91C5     JSON (sparsowany):
+{
+  "status": "534_1",
+  "error": "1"
+}
+2026-09-10 10:48:20,260  INFO      TRC-91C5     · klucze: ['status', 'error']
+2026-09-10 10:48:20,260  INFO      TRC-91C5     · odpowiedz NIEPOPRAWNA: status='534_1'  error='1'
+2026-09-10 10:48:20,261  INFO      TRC-91C5     · brakuje: ['sscc', 'picking_date', 'gross_weight_kg', 'SPR_LABEL_PRINT_RES_IT']
+2026-09-10 10:48:20,261  INFO      TRC-91C5     · ponawiam za 1.0 s...
+2026-09-10 10:48:21,261  INFO      
+------------------------------------------------------------------------------
+TRC-91C5  [4] ==> WMS  POST /SprLabelPrint  (proba 3 z 3)
+------------------------------------------------------------------------------
+2026-09-10 10:48:21,261  INFO      TRC-91C5     URL                  : http://192.168.1.34:8080/WilkRestServer/Wilk/SprLabelPrint
+2026-09-10 10:48:21,261  INFO      TRC-91C5     timeout [s]          : 10
+2026-09-10 10:48:21,261  INFO      TRC-91C5     JSON:
+{
+  "c_order_nr": "20260910084818018FF7",
+  "sscc": "020012340000738712"
+}
+2026-09-10 10:48:21,262  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-09-10 10:48:21,338  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprLabelPrint HTTP/1.1" 200 30
+2026-09-10 10:48:21,339  INFO      
+------------------------------------------------------------------------------
+TRC-91C5  [5] <== WMS  odpowiedz /SprLabelPrint
+------------------------------------------------------------------------------
+2026-09-10 10:48:21,339  INFO      TRC-91C5     HTTP                 : 200
+2026-09-10 10:48:21,339  INFO      TRC-91C5     czas [ms]            : 77.2
+2026-09-10 10:48:21,339  INFO      TRC-91C5     dlugosc              : 30
+2026-09-10 10:48:21,339  DEBUG     TRC-91C5     RAW BODY:
+{"status":"534_1","error":"1"}
+2026-09-10 10:48:21,339  INFO      TRC-91C5     JSON (sparsowany):
+{
+  "status": "534_1",
+  "error": "1"
+}
+2026-09-10 10:48:21,339  INFO      TRC-91C5     · klucze: ['status', 'error']
+2026-09-10 10:48:21,340  INFO      TRC-91C5     · odpowiedz NIEPOPRAWNA: status='534_1'  error='1'
+2026-09-10 10:48:21,340  INFO      TRC-91C5     · brakuje: ['sscc', 'picking_date', 'gross_weight_kg', 'SPR_LABEL_PRINT_RES_IT']
+2026-09-10 10:48:21,340  WARNING   
+------------------------------------------------------------------------------
+TRC-91C5  [5] !!! PRZERWANO: nie udalo sie pobrac danych etykiety
+------------------------------------------------------------------------------
+2026-09-10 10:48:21,340  WARNING   TRC-91C5     szczegoly: status=534_1 error=1
+2026-09-10 10:48:21,340  INFO      TRC-91C5     · waga zastepcza: BU_QUANTITY=44800 x 0.001 = 44.8000 kg
+2026-09-10 10:48:21,340  INFO      TRC-91C5     · TRYB AWARYJNY: brak danych etykiety z WMS, odpowiadam z waga zastepcza (przeliczone z BU_QUANTITY przyslanego przez PLC)
+2026-09-10 10:48:21,340  INFO      
+------------------------------------------------------------------------------
+TRC-91C5  [6] ==> PLC  TCP :4301  odpowiedz awaryjna (brak danych etykiety)
+------------------------------------------------------------------------------
+2026-09-10 10:48:21,341  INFO      TRC-91C5     bajtow               : 340
+2026-09-10 10:48:21,341  INFO      TRC-91C5     JSON:
+{
+  "status": "OK",
+  "sscc": "020012340000738712",
+  "sscc_list": [
+    "020012340000738712"
+  ],
+  "picking_date": "2026-09-10",
+  "gross_weight_kg": 44.800000000000004,
+  "items": [],
+  "ts": "2026-09-10T10:49:05Z",
+  "warning": "WMS_LABEL_UNAVAILABLE",
+  "weight_source": "przeliczone z BU_QUANTITY przyslanego przez PLC",
+  "wms_label_raw": "status=534_1 error=1"
+}
+2026-09-10 10:48:21,341  WARNING   TRC-91C5  ⚠️  ZAKONCZONE AWARYJNIE  sscc=020012340000738712  waga=44.800000000000004 kg  zrodlo=przeliczone z BU_QUANTITY przyslanego przez PLC  czas=410060.9 ms
+2026-09-10 10:48:21,341  INFO      🔚 TRC-91C5 Rozlaczono OUTPUT: ('192.168.20.3', 50339)
+2026-09-10 10:48:23,355  INFO      
+🔗 TRC-DC08 Klient OUTPUT polaczony: ('192.168.20.3', 49492)
+2026-09-10 10:48:25,485  INFO      TRC-044F     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:48:25,486  INFO      
+------------------------------------------------------------------------------
+TRC-044F  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:48:25,486  INFO      TRC-044F     zrodlo               : 192.168.20.3:58526
+2026-09-10 10:48:25,486  INFO      TRC-044F     znakow               : 0
+2026-09-10 10:48:25,486  INFO      TRC-044F     czas [ms]            : 30008.0
+2026-09-10 10:48:25,487  DEBUG     TRC-044F     RAW BODY:
+''
+2026-09-10 10:48:25,487  ERROR     ❌ TRC-044F Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:48:25,487  ERROR     TRC-044F     odebrano: ''
+2026-09-10 10:48:25,487  INFO      🔚 TRC-044F Zamknieto INPUT: ('192.168.20.3', 58526)
+2026-09-10 10:48:27,489  INFO      🔗 TRC-CE5F Klient INPUT polaczony: ('192.168.20.3', 50844)
+2026-09-10 10:48:34,998  INFO      🔗 TRC-FA0A Klient INPUT polaczony: ('127.0.0.1', 62386)
+2026-09-10 10:48:34,998  INFO      TRC-FA0A     · recv #1: +218 B  (razem 218 B)
+2026-09-10 10:48:34,999  INFO      
+------------------------------------------------------------------------------
+TRC-FA0A  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:48:34,999  INFO      TRC-FA0A     zrodlo               : 127.0.0.1:62386
+2026-09-10 10:48:34,999  INFO      TRC-FA0A     znakow               : 218
+2026-09-10 10:48:34,999  INFO      TRC-FA0A     czas [ms]            : 0.4
+2026-09-10 10:48:35,000  DEBUG     TRC-FA0A     RAW BODY:
+'[{"POSITION_NR": "0", "PRODUCT_NR": "03/04/09/2026", "PROD_SERIAL_NR": "0100000039", "BU_QUANTITY": "44800"}, {"POSITION_NR": "1", "PRODUCT_NR": "05/04/09/2026", "PROD_SERIAL_NR": "0100000039", "BU_QUANTITY": "24000"}]'
+2026-09-10 10:48:35,000  INFO      
+------------------------------------------------------------------------------
+TRC-FA0A  [1] <== PLC  sparsowany JSON od PLC
+------------------------------------------------------------------------------
+2026-09-10 10:48:35,000  INFO      TRC-FA0A     pozycji              : 2
+2026-09-10 10:48:35,000  INFO      TRC-FA0A     JSON:
+[
+  {
+    "POSITION_NR": "0",
+    "PRODUCT_NR": "03/04/09/2026",
+    "PROD_SERIAL_NR": "0100000039",
+    "BU_QUANTITY": "44800"
+  },
+  {
+    "POSITION_NR": "1",
+    "PRODUCT_NR": "05/04/09/2026",
+    "PROD_SERIAL_NR": "0100000039",
+    "BU_QUANTITY": "24000"
+  }
+]
+2026-09-10 10:48:35,001  INFO      TRC-FA0A     · dane w kolejce (dlugosc: 1)
+2026-09-10 10:48:35,001  INFO      TRC-B5DD     · pobrano z kolejki po 16.0 s  (zostalo: 0)
+2026-09-10 10:48:35,001  INFO      
+------------------------------------------------------------------------------
+TRC-B5DD  [1] <== PLC  dane uzyte w tej transakcji
+------------------------------------------------------------------------------
+2026-09-10 10:48:35,002  INFO      TRC-B5DD     JSON:
+[
+  {
+    "POSITION_NR": "0",
+    "PRODUCT_NR": "03/04/09/2026",
+    "PROD_SERIAL_NR": "0100000039",
+    "BU_QUANTITY": "44800"
+  },
+  {
+    "POSITION_NR": "1",
+    "PRODUCT_NR": "05/04/09/2026",
+    "PROD_SERIAL_NR": "0100000039",
+    "BU_QUANTITY": "24000"
+  }
+]
+2026-09-10 10:48:35,002  INFO      TRC-B5DD     · mapowanie: PLC PROD_SERIAL_NR='0100000039' -> WMS PRODUCT_NR='0100000039'
+2026-09-10 10:48:35,002  INFO      🔚 TRC-FA0A Zamknieto INPUT: ('127.0.0.1', 62386)
+2026-09-10 10:48:35,002  INFO      TRC-B5DD     · mapowanie: PLC PRODUCT_NR='03/04/09/2026' -> WMS PROD_SERIAL_NR='03/04/09/2026'
+2026-09-10 10:48:35,002  INFO      TRC-B5DD     · mapowanie: PLC PROD_SERIAL_NR='0100000039' -> WMS PRODUCT_NR='0100000039'
+2026-09-10 10:48:35,003  INFO      TRC-B5DD     · mapowanie: PLC PRODUCT_NR='05/04/09/2026' -> WMS PROD_SERIAL_NR='05/04/09/2026'
+2026-09-10 10:48:35,003  INFO      
+------------------------------------------------------------------------------
+TRC-B5DD  [2] ==> WMS  POST /Spr  (zamowienie SPR)
+------------------------------------------------------------------------------
+2026-09-10 10:48:35,003  INFO      TRC-B5DD     URL                  : http://192.168.1.34:8080/WilkRestServer/Wilk/Spr
+2026-09-10 10:48:35,003  INFO      TRC-B5DD     C_ORDER_NR           : 2026091008483504207C
+2026-09-10 10:48:35,004  INFO      TRC-B5DD     pozycji              : 2
+2026-09-10 10:48:35,004  INFO      TRC-B5DD     JSON:
+{
+  "SPR_HEADER": [
+    {
+      "FIRM_NR": "MAGH",
+      "CUSTOMER_NR": "MAGH",
+      "C_ORDER_NR": "2026091008483504207C",
+      "DATE_SHIPPING": "2026/09/10",
+      "WH_NR": "MAGH",
+      "SPR_ITEM": [
+        {
+          "POSITION_NR": "0",
+          "PRODUCT_NR": "0100000039",
+          "PROD_SERIAL_NR": "03/04/09/2026",
+          "BU_QUANTITY": "44800"
+        },
+        {
+          "POSITION_NR": "1",
+          "PRODUCT_NR": "0100000039",
+          "PROD_SERIAL_NR": "05/04/09/2026",
+          "BU_QUANTITY": "24000"
+        }
+      ]
+    }
+  ]
+}
+2026-09-10 10:48:35,007  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-09-10 10:48:35,392  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/Spr HTTP/1.1" 200 174
+2026-09-10 10:48:35,393  INFO      
+------------------------------------------------------------------------------
+TRC-B5DD  [3] <== WMS  odpowiedz /Spr
+------------------------------------------------------------------------------
+2026-09-10 10:48:35,393  INFO      TRC-B5DD     HTTP                 : 200
+2026-09-10 10:48:35,393  INFO      TRC-B5DD     czas [ms]            : 388.6
+2026-09-10 10:48:35,393  INFO      TRC-B5DD     dlugosc              : 173
+2026-09-10 10:48:35,393  DEBUG     TRC-B5DD     RAW BODY:
+{"c_order_nr":"2026091008483504207C","status":"OK","error":"IMPORT_COMPLETED","message":"Import zakończony sukcesem","ts":"2026-09-10T10:49:22Z","sscc":"020012340000738729"}
+2026-09-10 10:48:35,393  INFO      TRC-B5DD     JSON (sparsowany):
+{
+  "c_order_nr": "2026091008483504207C",
+  "status": "OK",
+  "error": "IMPORT_COMPLETED",
+  "message": "Import zakończony sukcesem",
+  "ts": "2026-09-10T10:49:22Z",
+  "sscc": "020012340000738729"
+}
+2026-09-10 10:48:35,394  INFO      TRC-B5DD     · ocena SPR: status='OK' error='IMPORT_COMPLETED' ==> PRZYJETE
+2026-09-10 10:48:35,394  INFO      TRC-B5DD     · SSCC: ['020012340000738729']  (sztuk: 1)
+2026-09-10 10:48:35,394  INFO      
+------------------------------------------------------------------------------
+TRC-B5DD  [4] ==> WMS  POST /SprLabelPrint  (proba 1 z 3)
+------------------------------------------------------------------------------
+2026-09-10 10:48:35,394  INFO      TRC-B5DD     URL                  : http://192.168.1.34:8080/WilkRestServer/Wilk/SprLabelPrint
+2026-09-10 10:48:35,394  INFO      TRC-B5DD     timeout [s]          : 10
+2026-09-10 10:48:35,395  INFO      TRC-B5DD     JSON:
+{
+  "c_order_nr": "2026091008483504207C",
+  "sscc": "020012340000738729"
+}
+2026-09-10 10:48:35,396  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-09-10 10:48:35,473  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprLabelPrint HTTP/1.1" 200 47
+2026-09-10 10:48:35,474  INFO      
+------------------------------------------------------------------------------
+TRC-B5DD  [5] <== WMS  odpowiedz /SprLabelPrint
+------------------------------------------------------------------------------
+2026-09-10 10:48:35,474  INFO      TRC-B5DD     HTTP                 : 200
+2026-09-10 10:48:35,474  INFO      TRC-B5DD     czas [ms]            : 79.1
+2026-09-10 10:48:35,474  INFO      TRC-B5DD     dlugosc              : 47
+2026-09-10 10:48:35,474  DEBUG     TRC-B5DD     RAW BODY:
+{"status":"530_1","error":"020012340000238533"}
+2026-09-10 10:48:35,474  INFO      TRC-B5DD     JSON (sparsowany):
+{
+  "status": "530_1",
+  "error": "020012340000238533"
+}
+2026-09-10 10:48:35,474  INFO      TRC-B5DD     · klucze: ['status', 'error']
+2026-09-10 10:48:35,475  INFO      TRC-B5DD     · odpowiedz NIEPOPRAWNA: status='530_1'  error='020012340000238533'
+2026-09-10 10:48:35,475  INFO      TRC-B5DD     · brakuje: ['sscc', 'picking_date', 'gross_weight_kg', 'SPR_LABEL_PRINT_RES_IT']
+2026-09-10 10:48:35,475  INFO      TRC-B5DD     · ponawiam za 1.0 s...
+2026-09-10 10:48:35,498  INFO      
+🔗 TRC-02A0 Klient OUTPUT polaczony: ('127.0.0.1', 62389)
+2026-09-10 10:48:36,480  INFO      
+------------------------------------------------------------------------------
+TRC-B5DD  [4] ==> WMS  POST /SprLabelPrint  (proba 2 z 3)
+------------------------------------------------------------------------------
+2026-09-10 10:48:36,480  INFO      TRC-B5DD     URL                  : http://192.168.1.34:8080/WilkRestServer/Wilk/SprLabelPrint
+2026-09-10 10:48:36,480  INFO      TRC-B5DD     timeout [s]          : 10
+2026-09-10 10:48:36,481  INFO      TRC-B5DD     JSON:
+{
+  "c_order_nr": "2026091008483504207C",
+  "sscc": "020012340000738729"
+}
+2026-09-10 10:48:36,483  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-09-10 10:48:36,552  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprLabelPrint HTTP/1.1" 200 47
+2026-09-10 10:48:36,553  INFO      
+------------------------------------------------------------------------------
+TRC-B5DD  [5] <== WMS  odpowiedz /SprLabelPrint
+------------------------------------------------------------------------------
+2026-09-10 10:48:36,553  INFO      TRC-B5DD     HTTP                 : 200
+2026-09-10 10:48:36,553  INFO      TRC-B5DD     czas [ms]            : 72.1
+2026-09-10 10:48:36,553  INFO      TRC-B5DD     dlugosc              : 47
+2026-09-10 10:48:36,553  DEBUG     TRC-B5DD     RAW BODY:
+{"status":"530_1","error":"020012340000238533"}
+2026-09-10 10:48:36,554  INFO      TRC-B5DD     JSON (sparsowany):
+{
+  "status": "530_1",
+  "error": "020012340000238533"
+}
+2026-09-10 10:48:36,554  INFO      TRC-B5DD     · klucze: ['status', 'error']
+2026-09-10 10:48:36,554  INFO      TRC-B5DD     · odpowiedz NIEPOPRAWNA: status='530_1'  error='020012340000238533'
+2026-09-10 10:48:36,554  INFO      TRC-B5DD     · brakuje: ['sscc', 'picking_date', 'gross_weight_kg', 'SPR_LABEL_PRINT_RES_IT']
+2026-09-10 10:48:36,554  INFO      TRC-B5DD     · ponawiam za 1.0 s...
+2026-09-10 10:48:37,554  INFO      
+------------------------------------------------------------------------------
+TRC-B5DD  [4] ==> WMS  POST /SprLabelPrint  (proba 3 z 3)
+------------------------------------------------------------------------------
+2026-09-10 10:48:37,555  INFO      TRC-B5DD     URL                  : http://192.168.1.34:8080/WilkRestServer/Wilk/SprLabelPrint
+2026-09-10 10:48:37,555  INFO      TRC-B5DD     timeout [s]          : 10
+2026-09-10 10:48:37,555  INFO      TRC-B5DD     JSON:
+{
+  "c_order_nr": "2026091008483504207C",
+  "sscc": "020012340000738729"
+}
+2026-09-10 10:48:37,557  DEBUG     Starting new HTTP connection (1): 192.168.1.34:8080
+2026-09-10 10:48:37,625  DEBUG     http://192.168.1.34:8080 "POST /WilkRestServer/Wilk/SprLabelPrint HTTP/1.1" 200 47
+2026-09-10 10:48:37,625  INFO      
+------------------------------------------------------------------------------
+TRC-B5DD  [5] <== WMS  odpowiedz /SprLabelPrint
+------------------------------------------------------------------------------
+2026-09-10 10:48:37,625  INFO      TRC-B5DD     HTTP                 : 200
+2026-09-10 10:48:37,626  INFO      TRC-B5DD     czas [ms]            : 70.1
+2026-09-10 10:48:37,626  INFO      TRC-B5DD     dlugosc              : 47
+2026-09-10 10:48:37,626  DEBUG     TRC-B5DD     RAW BODY:
+{"status":"530_1","error":"020012340000238533"}
+2026-09-10 10:48:37,626  INFO      TRC-B5DD     JSON (sparsowany):
+{
+  "status": "530_1",
+  "error": "020012340000238533"
+}
+2026-09-10 10:48:37,626  INFO      TRC-B5DD     · klucze: ['status', 'error']
+2026-09-10 10:48:37,626  INFO      TRC-B5DD     · odpowiedz NIEPOPRAWNA: status='530_1'  error='020012340000238533'
+2026-09-10 10:48:37,626  INFO      TRC-B5DD     · brakuje: ['sscc', 'picking_date', 'gross_weight_kg', 'SPR_LABEL_PRINT_RES_IT']
+2026-09-10 10:48:37,626  WARNING   
+------------------------------------------------------------------------------
+TRC-B5DD  [5] !!! PRZERWANO: nie udalo sie pobrac danych etykiety
+------------------------------------------------------------------------------
+2026-09-10 10:48:37,626  WARNING   TRC-B5DD     szczegoly: status=530_1 error=020012340000238533
+2026-09-10 10:48:37,626  INFO      TRC-B5DD     · waga zastepcza: BU_QUANTITY=68800 x 0.001 = 68.8000 kg
+2026-09-10 10:48:37,626  INFO      TRC-B5DD     · TRYB AWARYJNY: brak danych etykiety z WMS, odpowiadam z waga zastepcza (przeliczone z BU_QUANTITY przyslanego przez PLC)
+2026-09-10 10:48:37,627  INFO      
+------------------------------------------------------------------------------
+TRC-B5DD  [6] ==> PLC  TCP :4301  odpowiedz awaryjna (brak danych etykiety)
+------------------------------------------------------------------------------
+2026-09-10 10:48:37,627  INFO      TRC-B5DD     bajtow               : 343
+2026-09-10 10:48:37,627  INFO      TRC-B5DD     JSON:
+{
+  "status": "OK",
+  "sscc": "020012340000738729",
+  "sscc_list": [
+    "020012340000738729"
+  ],
+  "picking_date": "2026-09-10",
+  "gross_weight_kg": 68.8,
+  "items": [],
+  "ts": "2026-09-10T10:49:22Z",
+  "warning": "WMS_LABEL_UNAVAILABLE",
+  "weight_source": "przeliczone z BU_QUANTITY przyslanego przez PLC",
+  "wms_label_raw": "status=530_1 error=020012340000238533"
+}
+2026-09-10 10:48:37,627  WARNING   TRC-B5DD  ⚠️  ZAKONCZONE AWARYJNIE  sscc=020012340000738729  waga=68.8 kg  zrodlo=przeliczone z BU_QUANTITY przyslanego przez PLC  czas=18635.3 ms
+2026-09-10 10:48:37,627  INFO      🔚 TRC-B5DD Rozlaczono OUTPUT: ('127.0.0.1', 62378)
+2026-09-10 10:48:57,498  INFO      TRC-CE5F     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:48:57,498  INFO      
+------------------------------------------------------------------------------
+TRC-CE5F  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:48:57,499  INFO      TRC-CE5F     zrodlo               : 192.168.20.3:50844
+2026-09-10 10:48:57,499  INFO      TRC-CE5F     znakow               : 0
+2026-09-10 10:48:57,499  INFO      TRC-CE5F     czas [ms]            : 30008.6
+2026-09-10 10:48:57,500  DEBUG     TRC-CE5F     RAW BODY:
+''
+2026-09-10 10:48:57,500  ERROR     ❌ TRC-CE5F Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:48:57,500  ERROR     TRC-CE5F     odebrano: ''
+2026-09-10 10:48:57,500  INFO      🔚 TRC-CE5F Zamknieto INPUT: ('192.168.20.3', 50844)
+2026-09-10 10:48:59,504  INFO      🔗 TRC-C5E0 Klient INPUT polaczony: ('192.168.20.3', 50929)
+2026-09-10 10:49:29,518  INFO      TRC-C5E0     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:49:29,519  INFO      
+------------------------------------------------------------------------------
+TRC-C5E0  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:49:29,521  INFO      TRC-C5E0     zrodlo               : 192.168.20.3:50929
+2026-09-10 10:49:29,521  INFO      TRC-C5E0     znakow               : 0
+2026-09-10 10:49:29,522  INFO      TRC-C5E0     czas [ms]            : 30014.6
+2026-09-10 10:49:29,522  DEBUG     TRC-C5E0     RAW BODY:
+''
+2026-09-10 10:49:29,522  ERROR     ❌ TRC-C5E0 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:49:29,522  ERROR     TRC-C5E0     odebrano: ''
+2026-09-10 10:49:29,522  INFO      🔚 TRC-C5E0 Zamknieto INPUT: ('192.168.20.3', 50929)
+2026-09-10 10:49:31,525  INFO      🔗 TRC-9C46 Klient INPUT polaczony: ('192.168.20.3', 61465)
+2026-09-10 10:50:01,527  INFO      TRC-9C46     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:50:01,527  INFO      
+------------------------------------------------------------------------------
+TRC-9C46  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:50:01,527  INFO      TRC-9C46     zrodlo               : 192.168.20.3:61465
+2026-09-10 10:50:01,528  INFO      TRC-9C46     znakow               : 0
+2026-09-10 10:50:01,528  INFO      TRC-9C46     czas [ms]            : 30001.2
+2026-09-10 10:50:01,528  DEBUG     TRC-9C46     RAW BODY:
+''
+2026-09-10 10:50:01,530  ERROR     ❌ TRC-9C46 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:50:01,530  ERROR     TRC-9C46     odebrano: ''
+2026-09-10 10:50:01,530  INFO      🔚 TRC-9C46 Zamknieto INPUT: ('192.168.20.3', 61465)
+2026-09-10 10:50:03,536  INFO      🔗 TRC-362A Klient INPUT polaczony: ('192.168.20.3', 59916)
+2026-09-10 10:50:33,540  INFO      TRC-362A     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:50:33,541  INFO      
+------------------------------------------------------------------------------
+TRC-362A  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:50:33,542  INFO      TRC-362A     zrodlo               : 192.168.20.3:59916
+2026-09-10 10:50:33,542  INFO      TRC-362A     znakow               : 0
+2026-09-10 10:50:33,543  INFO      TRC-362A     czas [ms]            : 30004.9
+2026-09-10 10:50:33,543  DEBUG     TRC-362A     RAW BODY:
+''
+2026-09-10 10:50:33,543  ERROR     ❌ TRC-362A Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:50:33,543  ERROR     TRC-362A     odebrano: ''
+2026-09-10 10:50:33,544  INFO      🔚 TRC-362A Zamknieto INPUT: ('192.168.20.3', 59916)
+2026-09-10 10:50:35,550  INFO      🔗 TRC-B835 Klient INPUT polaczony: ('192.168.20.3', 52306)
+2026-09-10 10:51:05,563  INFO      TRC-B835     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:51:05,563  INFO      
+------------------------------------------------------------------------------
+TRC-B835  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:51:05,564  INFO      TRC-B835     zrodlo               : 192.168.20.3:52306
+2026-09-10 10:51:05,567  INFO      TRC-B835     znakow               : 0
+2026-09-10 10:51:05,569  INFO      TRC-B835     czas [ms]            : 30012.4
+2026-09-10 10:51:05,571  DEBUG     TRC-B835     RAW BODY:
+''
+2026-09-10 10:51:05,572  ERROR     ❌ TRC-B835 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:51:05,573  ERROR     TRC-B835     odebrano: ''
+2026-09-10 10:51:05,575  INFO      🔚 TRC-B835 Zamknieto INPUT: ('192.168.20.3', 52306)
+2026-09-10 10:51:07,581  INFO      🔗 TRC-8B27 Klient INPUT polaczony: ('192.168.20.3', 61914)
+2026-09-10 10:51:37,582  INFO      TRC-8B27     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:51:37,583  INFO      
+------------------------------------------------------------------------------
+TRC-8B27  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:51:37,584  INFO      TRC-8B27     zrodlo               : 192.168.20.3:61914
+2026-09-10 10:51:37,584  INFO      TRC-8B27     znakow               : 0
+2026-09-10 10:51:37,585  INFO      TRC-8B27     czas [ms]            : 30001.4
+2026-09-10 10:51:37,585  DEBUG     TRC-8B27     RAW BODY:
+''
+2026-09-10 10:51:37,585  ERROR     ❌ TRC-8B27 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:51:37,585  ERROR     TRC-8B27     odebrano: ''
+2026-09-10 10:51:37,585  INFO      🔚 TRC-8B27 Zamknieto INPUT: ('192.168.20.3', 61914)
+2026-09-10 10:51:39,591  INFO      🔗 TRC-47AB Klient INPUT polaczony: ('192.168.20.3', 64616)
+2026-09-10 10:52:09,598  INFO      TRC-47AB     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:52:09,599  INFO      
+------------------------------------------------------------------------------
+TRC-47AB  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:52:09,599  INFO      TRC-47AB     zrodlo               : 192.168.20.3:64616
+2026-09-10 10:52:09,599  INFO      TRC-47AB     znakow               : 0
+2026-09-10 10:52:09,599  INFO      TRC-47AB     czas [ms]            : 30006.3
+2026-09-10 10:52:09,599  DEBUG     TRC-47AB     RAW BODY:
+''
+2026-09-10 10:52:09,599  ERROR     ❌ TRC-47AB Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:52:09,600  ERROR     TRC-47AB     odebrano: ''
+2026-09-10 10:52:09,600  INFO      🔚 TRC-47AB Zamknieto INPUT: ('192.168.20.3', 64616)
+2026-09-10 10:52:11,607  INFO      🔗 TRC-568E Klient INPUT polaczony: ('192.168.20.3', 59041)
+2026-09-10 10:52:41,607  INFO      TRC-568E     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:52:41,608  INFO      
+------------------------------------------------------------------------------
+TRC-568E  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:52:41,608  INFO      TRC-568E     zrodlo               : 192.168.20.3:59041
+2026-09-10 10:52:41,608  INFO      TRC-568E     znakow               : 0
+2026-09-10 10:52:41,608  INFO      TRC-568E     czas [ms]            : 30000.1
+2026-09-10 10:52:41,608  DEBUG     TRC-568E     RAW BODY:
+''
+2026-09-10 10:52:41,608  ERROR     ❌ TRC-568E Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:52:41,608  ERROR     TRC-568E     odebrano: ''
+2026-09-10 10:52:41,608  INFO      🔚 TRC-568E Zamknieto INPUT: ('192.168.20.3', 59041)
+2026-09-10 10:52:43,611  INFO      🔗 TRC-8633 Klient INPUT polaczony: ('192.168.20.3', 58389)
+2026-09-10 10:53:13,618  INFO      TRC-8633     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:53:13,618  INFO      
+------------------------------------------------------------------------------
+TRC-8633  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:53:13,619  INFO      TRC-8633     zrodlo               : 192.168.20.3:58389
+2026-09-10 10:53:13,619  INFO      TRC-8633     znakow               : 0
+2026-09-10 10:53:13,619  INFO      TRC-8633     czas [ms]            : 30006.9
+2026-09-10 10:53:13,620  DEBUG     TRC-8633     RAW BODY:
+''
+2026-09-10 10:53:13,620  ERROR     ❌ TRC-8633 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:53:13,620  ERROR     TRC-8633     odebrano: ''
+2026-09-10 10:53:13,620  INFO      🔚 TRC-8633 Zamknieto INPUT: ('192.168.20.3', 58389)
+2026-09-10 10:53:15,625  INFO      🔗 TRC-D65B Klient INPUT polaczony: ('192.168.20.3', 51344)
+2026-09-10 10:53:45,638  INFO      TRC-D65B     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:53:45,638  INFO      
+------------------------------------------------------------------------------
+TRC-D65B  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:53:45,638  INFO      TRC-D65B     zrodlo               : 192.168.20.3:51344
+2026-09-10 10:53:45,638  INFO      TRC-D65B     znakow               : 0
+2026-09-10 10:53:45,638  INFO      TRC-D65B     czas [ms]            : 30012.2
+2026-09-10 10:53:45,639  DEBUG     TRC-D65B     RAW BODY:
+''
+2026-09-10 10:53:45,639  ERROR     ❌ TRC-D65B Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:53:45,639  ERROR     TRC-D65B     odebrano: ''
+2026-09-10 10:53:45,639  INFO      🔚 TRC-D65B Zamknieto INPUT: ('192.168.20.3', 51344)
+2026-09-10 10:53:47,642  INFO      🔗 TRC-7C1D Klient INPUT polaczony: ('192.168.20.3', 52770)
+2026-09-10 10:54:17,654  INFO      TRC-7C1D     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:54:17,654  INFO      
+------------------------------------------------------------------------------
+TRC-7C1D  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:54:17,654  INFO      TRC-7C1D     zrodlo               : 192.168.20.3:52770
+2026-09-10 10:54:17,654  INFO      TRC-7C1D     znakow               : 0
+2026-09-10 10:54:17,655  INFO      TRC-7C1D     czas [ms]            : 30012.1
+2026-09-10 10:54:17,655  DEBUG     TRC-7C1D     RAW BODY:
+''
+2026-09-10 10:54:17,655  ERROR     ❌ TRC-7C1D Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:54:17,655  ERROR     TRC-7C1D     odebrano: ''
+2026-09-10 10:54:17,655  INFO      🔚 TRC-7C1D Zamknieto INPUT: ('192.168.20.3', 52770)
+2026-09-10 10:54:19,657  INFO      🔗 TRC-3DC2 Klient INPUT polaczony: ('192.168.20.3', 55506)
+2026-09-10 10:54:49,669  INFO      TRC-3DC2     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:54:49,670  INFO      
+------------------------------------------------------------------------------
+TRC-3DC2  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:54:49,670  INFO      TRC-3DC2     zrodlo               : 192.168.20.3:55506
+2026-09-10 10:54:49,670  INFO      TRC-3DC2     znakow               : 0
+2026-09-10 10:54:49,670  INFO      TRC-3DC2     czas [ms]            : 30012.0
+2026-09-10 10:54:49,670  DEBUG     TRC-3DC2     RAW BODY:
+''
+2026-09-10 10:54:49,670  ERROR     ❌ TRC-3DC2 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:54:49,670  ERROR     TRC-3DC2     odebrano: ''
+2026-09-10 10:54:49,671  INFO      🔚 TRC-3DC2 Zamknieto INPUT: ('192.168.20.3', 55506)
+2026-09-10 10:54:51,673  INFO      🔗 TRC-5CD5 Klient INPUT polaczony: ('192.168.20.3', 53185)
+2026-09-10 10:55:21,675  INFO      TRC-5CD5     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:55:21,675  INFO      
+------------------------------------------------------------------------------
+TRC-5CD5  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:55:21,675  INFO      TRC-5CD5     zrodlo               : 192.168.20.3:53185
+2026-09-10 10:55:21,675  INFO      TRC-5CD5     znakow               : 0
+2026-09-10 10:55:21,676  INFO      TRC-5CD5     czas [ms]            : 30002.0
+2026-09-10 10:55:21,676  DEBUG     TRC-5CD5     RAW BODY:
+''
+2026-09-10 10:55:21,676  ERROR     ❌ TRC-5CD5 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:55:21,676  ERROR     TRC-5CD5     odebrano: ''
+2026-09-10 10:55:21,676  INFO      🔚 TRC-5CD5 Zamknieto INPUT: ('192.168.20.3', 53185)
+2026-09-10 10:55:23,678  INFO      🔗 TRC-1342 Klient INPUT polaczony: ('192.168.20.3', 53230)
+2026-09-10 10:55:53,692  INFO      TRC-1342     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:55:53,693  INFO      
+------------------------------------------------------------------------------
+TRC-1342  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:55:53,693  INFO      TRC-1342     zrodlo               : 192.168.20.3:53230
+2026-09-10 10:55:53,693  INFO      TRC-1342     znakow               : 0
+2026-09-10 10:55:53,693  INFO      TRC-1342     czas [ms]            : 30014.5
+2026-09-10 10:55:53,693  DEBUG     TRC-1342     RAW BODY:
+''
+2026-09-10 10:55:53,694  ERROR     ❌ TRC-1342 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:55:53,694  ERROR     TRC-1342     odebrano: ''
+2026-09-10 10:55:53,694  INFO      🔚 TRC-1342 Zamknieto INPUT: ('192.168.20.3', 53230)
+2026-09-10 10:55:55,699  INFO      🔗 TRC-CD01 Klient INPUT polaczony: ('192.168.20.3', 53061)
+2026-09-10 10:56:25,710  INFO      TRC-CD01     · TIMEOUT odbioru po 30 s (odebrano 0 B)
+2026-09-10 10:56:25,711  INFO      
+------------------------------------------------------------------------------
+TRC-CD01  [1] <== PLC  TCP :4300  dane wejsciowe
+------------------------------------------------------------------------------
+2026-09-10 10:56:25,711  INFO      TRC-CD01     zrodlo               : 192.168.20.3:53061
+2026-09-10 10:56:25,711  INFO      TRC-CD01     znakow               : 0
+2026-09-10 10:56:25,711  INFO      TRC-CD01     czas [ms]            : 30011.3
+2026-09-10 10:56:25,711  DEBUG     TRC-CD01     RAW BODY:
+''
+2026-09-10 10:56:25,711  ERROR     ❌ TRC-CD01 Nie udalo sie odczytac poprawnego JSON-a
+2026-09-10 10:56:25,711  ERROR     TRC-CD01     odebrano: ''
+2026-09-10 10:56:25,712  INFO      🔚 TRC-CD01 Zamknieto INPUT: ('192.168.20.3', 53061)
+2026-09-10 10:56:27,713  INFO      🔗 TRC-2A1A Klient INPUT polaczony: ('192.168.20.3', 62925)
