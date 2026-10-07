@@ -1,3 +1,5 @@
+"""DTO bledu maszyny (stara tabela errors)."""
+
 from typing import Optional
 from dataclasses import dataclass
 from datetime import datetime

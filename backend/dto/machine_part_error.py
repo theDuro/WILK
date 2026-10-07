@@ -1,3 +1,5 @@
+"""DTO wpisu slownika alarmow (tabela machine_part_errors)."""
+
 from dataclasses import dataclass
 from typing import Optional
 from model.models import MachinePartError

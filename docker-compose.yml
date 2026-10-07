@@ -1,0 +1,59 @@
+# =============================================================================
+# Caly system WILK w Dockerze: baza + API + front.
+#
+#   docker compose up -d --build      # start (pierwszy raz importuje baza_dump.sql)
+#   docker compose logs -f backend    # logi API
+#   docker compose down               # stop (dane bazy zostaja w wolumenie)
+#   docker compose down -v            # stop + usuniecie danych bazy
+#
+# Nazwy kontenerow sa takie same jak w start_new.bat, wiec blendy.py
+# (docker cp do "autosoft_front") dziala w obu wariantach.
+#
+# Skrypty PLC (blendy.py, palety.py, WMS_BRIDGE.py) dzialaja POZA Dockerem,
+# bezposrednio na komputerze polaczonym ze sterownikiem – patrz README.md.
+# =============================================================================
+services:
+  db:
+    image: postgres:15
+    container_name: lokalny-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-Test1234!}
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./baza_dump.sql:/baza_dump.sql:ro
+      - ./docker/initdb:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: always
+
+  backend:
+    build: ./backend
+    container_name: flask_app
+    environment:
+      DATABASE_URL: postgresql+psycopg2://postgres:${DB_PASSWORD:-Test1234!}@db:5432/postgres
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY:-tajny_klucz}
+    ports:
+      - "5000:5000"
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  front:
+    build: ./front
+    container_name: autosoft_front
+    ports:
+      - "8080:8080"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  pgdata:

@@ -1,9 +1,9 @@
-from dataclasses import dataclass
-from datetime import datetime
-from typing import Optional
+"""DTO probki danych procesowych maszyny (tabela machine_data)."""
 
 from dataclasses import dataclass, field
 from datetime import datetime
+from typing import Optional
+
 from model.models import MachineDataORM
 
 @dataclass
@@ -12,10 +12,10 @@ class MachineDataDTO:
     is_running: bool
     has_error: bool
     cycle_completed: int
-    tag1: float
-    tag2: float
-    tag3: float
-    tag4: float
+    tag1: Optional[float]
+    tag2: Optional[float]
+    tag3: Optional[float]
+    tag4: Optional[float]
     timestamp: datetime = field(default_factory=datetime.now)
 
     @classmethod
@@ -25,12 +25,13 @@ class MachineDataDTO:
             is_running=data["is_running"],
             has_error=data["has_error"],
             cycle_completed=data["cycle_completed"],
-            tag1=data["tag1"],
-            tag2=data["tag2"],
-            tag3=data["tag3"],
-            tag4=data["tag4"],
+            tag1=data.get("tag1"),
+            tag2=data.get("tag2"),
+            tag3=data.get("tag3"),
+            tag4=data.get("tag4"),
             timestamp=datetime.now()
         )
+
     def to_dict(self):
         return {
             "machine_id": self.machine_id,
@@ -41,8 +42,9 @@ class MachineDataDTO:
             "tag2": self.tag2,
             "tag3": self.tag3,
             "tag4": self.tag4,
-            "timestamp": self.timestamp.isoformat()
+            "timestamp": self.timestamp.isoformat() if self.timestamp else None
         }
+
     @classmethod
     def from_orm(cls, orm_obj: MachineDataORM) -> "MachineDataDTO":
         return cls(
@@ -56,6 +58,7 @@ class MachineDataDTO:
             tag4=orm_obj.tag4,
             timestamp=orm_obj.timestamp
         )
+
     def to_orm(self) -> MachineDataORM:
         return MachineDataORM(
             machine_id=self.machine_id,
@@ -67,7 +70,4 @@ class MachineDataDTO:
             tag3=self.tag3,
             tag4=self.tag4,
             timestamp=self.timestamp
-    )
-
-
-
+        )
