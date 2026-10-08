@@ -12,6 +12,7 @@ import uuid
 import logging
 import requests
 import queue
+import select
 from datetime import datetime, UTC
 
 TCP_IP      = "0.0.0.0"
@@ -42,6 +43,30 @@ logging.basicConfig(
 log = logging.getLogger("bridge")
 
 order_queue = queue.Queue()
+
+# --- POPRAWKA (WinError 10054) ---------------------------------------------
+# Numer najnowszego polaczenia OUTPUT od PLC. Na dane czeka tylko najnowsze
+# polaczenie; starsze (porzucone przez PLC) sa zamykane i nie "zjadaja"
+# odpowiedzi, ktorej PLC juz nie odbierze.
+output_generation = 0
+output_lock = threading.Lock()
+
+
+def peer_closed(conn):
+    """True, jesli PLC zamknal/zerwal polaczenie (sprawdzenie bez czekania)."""
+    try:
+        readable, _, _ = select.select([conn], [], [], 0)
+        if not readable:
+            return False
+        return conn.recv(1, socket.MSG_PEEK) == b""
+    except (OSError, ValueError):
+        return True
+
+
+def is_current(generation):
+    with output_lock:
+        return generation == output_generation
+# ---------------------------------------------------------------------------
 
 
 def build_order(items_list):
@@ -130,21 +155,39 @@ def server_output():
     s.listen(5)
     log.info("📤 Serwer OUTPUT dziala na porcie %d", PORT_OUT)
 
+    global output_generation
     while True:
         conn, addr = s.accept()
-        threading.Thread(target=handle_output_client, args=(conn, addr), daemon=True).start()
+        with output_lock:
+            output_generation += 1
+            generation = output_generation
+        threading.Thread(target=handle_output_client, args=(conn, addr, generation), daemon=True).start()
 
 
-def handle_output_client(conn, addr):
+def handle_output_client(conn, addr, generation):
     try:
         log.info("\n🔗 Klient OUTPUT polaczony: %s", addr)
 
         items_list = None
         while items_list is None:
+            # POPRAWKA: nie czekamy na martwym / zastapionym polaczeniu
+            if not is_current(generation):
+                log.info("PLC otworzyl nowsze polaczenie OUTPUT – zamykam stare %s", addr)
+                return
+            if peer_closed(conn):
+                log.info("PLC zamknal polaczenie OUTPUT %s – przestaje na nim czekac", addr)
+                return
             try:
                 items_list = order_queue.get_nowait()
             except queue.Empty:
                 time.sleep(0.1)
+                continue
+            # POPRAWKA: jesli polaczenie umarlo w chwili pobrania danych,
+            # oddajemy je do kolejki dla nowego polaczenia PLC
+            if peer_closed(conn) or not is_current(generation):
+                order_queue.put(items_list)
+                log.info("Polaczenie OUTPUT %s nieaktualne – dane wracaja do kolejki", addr)
+                return
 
         order_payload, c_order_nr = build_order(items_list)
         log.info("➡️ POST %s  C_ORDER_NR=%s", WMS_SPR_URL, c_order_nr)

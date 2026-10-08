@@ -146,13 +146,14 @@ def main():
         {"POSITION_NR": "2", "PRODUCT_NR": "0100000039", "PROD_SERIAL_NR": "Partia3", "BU_QUANTITY": "20"},
     ])
 
-    # spodziewany wynik: ERR / EMPTY_OR_INVALID_ITEMS
+    # spodziewany wynik: ERR z WMS (pusta lista trafia do WMS jak w oryginale)
     run_case("TEST 4: BLAD – pusta lista pozycji", [])
 
-    # spodziewany wynik: ERR / INVALID_JSON
+    # spodziewany wynik: brak odpowiedzi (timeout) – bridge loguje blad JSON
+    # i nie odsyla nic, tak jak w oryginalnej wersji
     run_case("TEST 5: BLAD – niepoprawny JSON", b"TO NIE JEST JSON {{{")
 
-    # spodziewany wynik: OK – bridge ignoruje padding (null-e/spacje) po JSON-ie
+    # spodziewany wynik: OK – bridge obcina dane po ostatnim "]"
     run_case("TEST 6: JSON z paddingiem jak z PLC",
              json.dumps([{"POSITION_NR": "0", "PRODUCT_NR": "0100000039",
                           "PROD_SERIAL_NR": "Pad", "BU_QUANTITY": "1"}]).encode() + b"\x00" * 50)

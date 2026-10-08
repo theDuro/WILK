@@ -54,6 +54,8 @@ System działa na komputerze z Windows podłączonym do sterownika PLC linii. Ro
 | 4200 | `palety.py`: liczniki i stany części (TCP) | PLC |
 | 4300 | `WMS_BRIDGE.py`: INPUT, dane palety (TCP) | PLC |
 | 4301 | `WMS_BRIDGE.py`: OUTPUT, odpowiedź z SSCC (TCP) | PLC |
+| 4400 | `finish_bridge.py`: INPUT, SSCC do zamknięcia (TCP) | PLC |
+| 4401 | `finish_bridge.py`: OUTPUT, odpowiedź OK/NOK (TCP) | PLC |
 | 5000 | API Flask | frontend |
 | 5432 | PostgreSQL | API i skrypty |
 | 8080 | Frontend | przeglądarka |
@@ -71,6 +73,7 @@ WILK/
 ├── requirements.txt        ← zależności skryptów z głównego katalogu
 │
 ├── WMS_BRIDGE.py           ← most PLC ↔ WMS (porty 4300/4301)
+├── finish_bridge.py        ← zamknięcie palety w WMS (porty 4400/4401)
 ├── blendy.py               ← odbiór alarmów z PLC (port 4000) + alarm na ekran
 ├── palety.py               ← odbiór liczników części z PLC (port 4200)
 ├── add_to_base.py          ← dane startowe: części 38–42, liczniki, słownik alarmów
@@ -238,11 +241,13 @@ docker push theduro/new-front-21.04:latest
 REM okno 1 – atrapa WMS na porcie 8081
 python mock_wms.py
 
-REM okno 2 – bridge skierowany na atrape
-set WMS_BASE=http://127.0.0.1:8081/WilkRestServer/Wilk
+REM okno 2 – bridge skierowany na atrape: w KOPII pliku WMS_BRIDGE.py zmien
+REM WMS_BASE na "http://127.0.0.1:8081/WilkRestServer/Wilk" (w finish_bridge.py:
+REM WMS_URL na ".../Wilk/SprFinishApl") i uruchom kopie
 python WMS_BRIDGE.py
 
 REM okno 3 – symulator PLC (6 scenariuszy: 1–3 partie, pusta lista, zly JSON, padding)
+REM (finish_bridge.py testuje sie tak samo – atrapa obsluguje tez /SprFinishApl)
 python test.py
 ```
 
@@ -295,14 +300,7 @@ Każda zmienna ma wartość domyślną równą dotychczasowej konfiguracji, wię
 | `FRONT_CONTAINER` | `autosoft_front` | kontener, do którego trafia `alarm.json` |
 | `PALETY_PORT` | `4200` | port liczników (`palety.py`) |
 
-**`WMS_BRIDGE.py`**
-
-| Zmienna | Domyślnie | Opis |
-|---------|-----------|------|
-| `WMS_BASE` | `http://192.168.1.34:8080/WilkRestServer/Wilk` | adres WMS |
-| `BRIDGE_PORT_IN` / `BRIDGE_PORT_OUT` | `4300` / `4301` | porty dla PLC |
-| `WMS_FIRM_NR`, `WMS_CUSTOMER_NR`, `WMS_WH_NR` | `MAGH` | firma, klient, magazyn w WMS |
-| `WMS_ORDER_TYPE_NR` | `AUTO` | typ zlecenia |
+**`WMS_BRIDGE.py` i `finish_bridge.py`** nie używają zmiennych środowiskowych. Adres WMS, porty i dane firmy (`MAGH`) są stałymi na początku każdego pliku.
 
 Ustawienie zmiennej na Windows przed uruchomieniem skryptu: `set NAZWA=wartosc` w tym samym oknie. Na stałe: `setx NAZWA wartosc`, a potem trzeba otworzyć nowe okno.
 
@@ -341,25 +339,22 @@ albo lista takich obiektów. Dashboard pokazuje: `is_empty: true` jako **BRAK**,
    {"status": "OK", "sscc": "020012340000738354", "picking_date": "2026-05-06",
     "gross_weight_kg": 25.0054, "product_name": "..."}
    ```
-   albo przy błędzie:
+   albo przy błędzie WMS:
    ```json
    {"status": "ERR", "error": "ACTIVATE_ORDER_ERROR", "message": "..."}
    ```
+   Przy niepoprawnym JSON-ie z PLC bridge tylko loguje błąd i nic nie odsyła.
 
-Kody błędów generowane przez sam bridge:
+### Zamknięcie palety: porty 4400 i 4401 (`finish_bridge.py`)
 
-| Kod | Znaczenie |
-|-----|-----------|
-| `INVALID_JSON` | PLC wysłał niepoprawny JSON |
-| `EMPTY_OR_INVALID_ITEMS` | pusta lub niepoprawna lista pozycji |
-| `WMS_ERROR` | brak połączenia z WMS lub timeout (10 s) |
-| `WMS_EMPTY_RESPONSE`, `WMS_INVALID_JSON` | WMS zwrócił pustą lub błędną odpowiedź |
-| `NO_SSCC` | WMS przyjął zlecenie, ale nie zwrócił SSCC |
-| `WMS_LABEL_ERROR`, `WMS_LABEL_INVALID_JSON` | błąd pobierania danych etykiety |
+1. PLC łączy się na **4401 (OUTPUT)** i czeka.
+2. PLC wysyła na **4400 (INPUT)** SSCC palety: `{"sscc": "020012340000738569"}`.
+3. Bridge wysyła `POST /SprFinishApl` do WMS.
+4. Na OUTPUT wraca tekst `OK` albo `NOK`. Puste body z WMS jest traktowane jako `OK`.
 
-Pozostałe kody, np. `ACTIVATE_ORDER_ERROR`, pochodzą bezpośrednio z WMS.
+### Poprawka „WinError 10054” (oba bridge)
 
-Odpowiedź dostaje zawsze **najnowsze** połączenie OUTPUT. Gdy PLC otworzy nowe, stare jest zamykane, żeby zerwane połączenie nie „zjadło” wyniku palety.
+Odpowiedź dostaje zawsze **najnowsze** połączenie OUTPUT od PLC. Bridge zamyka połączenie, które PLC zamknął albo zastąpił nowym, zamiast trzymać je i wysłać na nie odpowiedź. Wcześniej takie porzucone połączenie potrafiło „zjeść” wynik. PLC go nie odbierał, a w logu pojawiał się `WinError 10054`, mimo że zlecenie w WMS było już założone. Poza tym działanie obu bridge'ów jest takie jak w wersji z produkcji.
 
 ---
 
@@ -418,7 +413,7 @@ Odtworzenie na nowej instalacji robi `docker compose` (patrz wyżej), które imp
 
 ## Logi i rozwiązywanie problemów
 
-- `WMS_BRIDGE.py` pisze do `wms_bridge_simple.log` **obok skryptu** oraz na konsolę.
+- `WMS_BRIDGE.py` pisze do `wms_bridge_simple.log`, a `finish_bridge.py` do `finish_bridge.log`. Oba pliki powstają w katalogu, z którego uruchomiono skrypt, a logi trafiają też na konsolę.
 - `blendy.py` i `palety.py` piszą tylko na konsolę.
 - API: `docker logs -f flask_app`. Baza: `docker logs -f lokalny-postgres`.
 

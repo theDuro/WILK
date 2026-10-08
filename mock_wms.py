@@ -4,6 +4,9 @@ Atrapa (mock) systemu WMS do testow WMS_BRIDGE.py bez prawdziwego WMS.
 Udaje dwa endpointy WilkRestServer:
     POST /WilkRestServer/Wilk/Spr            – zalozenie zlecenia, zwraca SSCC
     POST /WilkRestServer/Wilk/SprLabelPrint  – dane etykiety (waga, produkt)
+    POST /WilkRestServer/Wilk/SprFinishApl   – zamkniecie palety (finish_bridge.py):
+                                               puste body = OK, SSCC zaczynajacy sie
+                                               od "9" = blad "Transport not found"
 
 Uruchomienie:
     python mock_wms.py            (nasluchuje na porcie 8081)
@@ -65,6 +68,20 @@ class MockWmsHandler(BaseHTTPRequestHandler):
                      "bu_quantity": "2"}
                 ],
             })
+        elif self.path == PREFIX + "/SprFinishApl":
+            sscc = str(body.get("sscc") or "")
+            if not sscc:
+                self._send_json({"status": "ERROR", "message": "SSCC not set"})
+            elif not (sscc.isdigit() and len(sscc) == 18):
+                self._send_json({"status": "ERROR", "message": "SSCC not found"})
+            elif sscc.startswith("9"):
+                self._send_json({"status": "ERROR", "message": "Transport not found"})
+            else:
+                # prawdziwy WMS przy sukcesie zwraca HTTP 200 z pustym body
+                self.send_response(200)
+                self.send_header("Content-Length", "0")
+                self.end_headers()
+
         else:
             self.send_response(404)
             self.end_headers()
