@@ -20,7 +20,6 @@ import socket
 import threading
 import time
 import queue
-import select
 import logging
 import requests
 
@@ -56,30 +55,6 @@ log = logging.getLogger("finish")
 # =============================================================================
 
 finish_queue = queue.Queue()
-
-# --- POPRAWKA (WinError 10054) ---------------------------------------------
-# Numer najnowszego polaczenia OUTPUT od PLC. Na SSCC czeka tylko najnowsze
-# polaczenie; starsze (porzucone przez PLC) sa zamykane i nie "zjadaja"
-# odpowiedzi OK/NOK, ktorej PLC juz nie odbierze.
-output_generation = 0
-output_lock = threading.Lock()
-
-
-def peer_closed(conn):
-    """True, jesli PLC zamknal/zerwal polaczenie (sprawdzenie bez czekania)."""
-    try:
-        readable, _, _ = select.select([conn], [], [], 0)
-        if not readable:
-            return False
-        return conn.recv(1, socket.MSG_PEEK) == b""
-    except (OSError, ValueError):
-        return True
-
-
-def is_current(generation):
-    with output_lock:
-        return generation == output_generation
-# ---------------------------------------------------------------------------
 
 # =============================================================================
 # PORT 4400 – odbior SSCC od PLC
@@ -143,43 +118,25 @@ def server_output():
     s.listen(5)
     log.info("📤 OUTPUT nasluchuje na porcie %d", PORT_OUT)
 
-    global output_generation
     while True:
         conn, addr = s.accept()
-        with output_lock:
-            output_generation += 1
-            generation = output_generation
         threading.Thread(
             target=handle_output,
-            args=(conn, addr, generation),
+            args=(conn, addr),
             daemon=True
         ).start()
 
 
-def handle_output(conn, addr, generation):
+def handle_output(conn, addr):
     log.info("🔗 OUTPUT polaczenie od: %s", addr)
     try:
         # Czekaj na SSCC z kolejki
         sscc = None
         while sscc is None:
-            # POPRAWKA: nie czekamy na martwym / zastapionym polaczeniu
-            if not is_current(generation):
-                log.info("PLC otworzyl nowsze polaczenie OUTPUT – zamykam stare %s", addr)
-                return
-            if peer_closed(conn):
-                log.info("PLC zamknal polaczenie OUTPUT %s – przestaje na nim czekac", addr)
-                return
             try:
                 sscc = finish_queue.get_nowait()
             except queue.Empty:
                 time.sleep(0.1)
-                continue
-            # POPRAWKA: jesli polaczenie umarlo w chwili pobrania SSCC,
-            # oddajemy je do kolejki dla nowego polaczenia PLC
-            if peer_closed(conn) or not is_current(generation):
-                finish_queue.put(sscc)
-                log.info("Polaczenie OUTPUT %s nieaktualne – SSCC wraca do kolejki", addr)
-                return
 
         log.info("➡️ POST %s  sscc=%s", WMS_URL, sscc)
 

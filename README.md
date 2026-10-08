@@ -352,9 +352,9 @@ albo lista takich obiektów. Dashboard pokazuje: `is_empty: true` jako **BRAK**,
 3. Bridge wysyła `POST /SprFinishApl` do WMS.
 4. Na OUTPUT wraca tekst `OK` albo `NOK`. Puste body z WMS jest traktowane jako `OK`.
 
-### Poprawka „WinError 10054” (oba bridge)
+### Poprawka „WinError 10054” (`WMS_BRIDGE.py`)
 
-Odpowiedź dostaje zawsze **najnowsze** połączenie OUTPUT od PLC. Bridge zamyka połączenie, które PLC zamknął albo zastąpił nowym, zamiast trzymać je i wysłać na nie odpowiedź. Wcześniej takie porzucone połączenie potrafiło „zjeść” wynik. PLC go nie odbierał, a w logu pojawiał się `WinError 10054`, mimo że zlecenie w WMS było już założone. Poza tym działanie obu bridge'ów jest takie jak w wersji z produkcji.
+Połączenie OUTPUT, które PLC zamknął, przestaje czekać na dane palety. Wcześniej takie porzucone połączenie potrafiło „zjeść” wynik. PLC go nie odbierał, a w logu pojawiał się `WinError 10054`, mimo że zlecenie w WMS było już założone. Poza tym działanie jest takie jak w wersji z produkcji. `finish_bridge.py` jest w wersji z produkcji, bez zmian.
 
 ---
 
